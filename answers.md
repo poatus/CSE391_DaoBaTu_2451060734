@@ -14,6 +14,7 @@ Trang web bị đánh giá seo thấp vì cấu trúc HTML chủ yếu là các 
     3. Thiếu thể <main> và <article>: Cần tách phần nội dung chính bằng main và thông tin sản phẩm bằng article
     4. Thiếu thẻ <footer>: Googel cần thẻ footer để xác định chân trang
     Code sửa lỗi:
+    ```html
                     <header>
                 <div class="logo">ShopTLU</div>
                 <nav>
