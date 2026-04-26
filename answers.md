@@ -34,3 +34,20 @@ Trang web bị đánh giá seo thấp vì cấu trúc HTML chủ yếu là các 
             <footer>
                 <p>&copy; 2026 ShopTLU</p>
             </footer>
+Câu A3 (5đ) — Block vs Inline
+Text art
+Hộp 1
+Text A Text B
+Hộp 2
+Text C Text D
+Hộp 3
+Giải thích chi tiết:
+Hộp 1 <div>: Là thẻ block, nó chiếm trọn dòng đầu tiên
+
+Text A & Text B <span>: Vì là thẻ inline, chúng đứng cạnh nhau trên cùng một dòng ngay sau Hộp 1
+
+Hộp 2 <div>: Là thẻ block, nó buộc phải "ngắt dòng" và bắt đầu một hàng mới bên dưới các thẻ inline phía trước
+
+Text C <span> & Text D <strong>: Cả hai đều là thẻ inline, nên chúng nằm cùng dòng với nhau
+
+Hộp 3 <div>: Là thẻ block, nó tiếp tục ngắt dòng và bắt đầu một hàng mới riêng biệt
