@@ -51,3 +51,15 @@ Hộp 2 <div>: Là thẻ block, nó buộc phải "ngắt dòng" và bắt đầ
 Text C <span> & Text D <strong>: Cả hai đều là thẻ inline, nên chúng nằm cùng dòng với nhau
 
 Hộp 3 <div>: Là thẻ block, nó tiếp tục ngắt dòng và bắt đầu một hàng mới riêng biệt
+Câu A4 (5đ) — Table
+
+
+<thead> (Table Head): Dùng để nhóm các hàng chứa tiêu đề (thường là các ô <th>). Phần này định nghĩa tên của các cột hoặc tiêu đề chung cho bảng.
+
+<tbody> (Table Body): Dùng để nhóm phần nội dung chính của bảng. Đây là nơi chứa hầu hết các hàng dữ liệu (<tr>) và các ô chứa dữ liệu thực tế (<td>).
+
+<tfoot> (Table Foot): Dùng để nhóm các hàng chứa thông tin chân bảng, ví dụ như các hàng tổng hợp, tổng cộng (sum), hoặc ghi chú cuối bảng.
+Tại sao KHÔNG NÊN dùng <table> để tạo layout trang web?
+1.Gây khó khăn cho SEO và khả năng tiếp cận:Các công cụ tìm kiếm sẽ phải tìm kiếm từ trái qua phải từ trên xuống dưới nếu các bảng lồng nhau thì cấu trúc HTML sẽ rất phức tạp, khiến khó xác định đâu là nội dung quan trọng nhất
+2.Khả năng thích ứng rất kém: Việc thay đổi bố cục trang web theo kích thước màn hình thiết bị sẽ gặp khó khăn với những màn hình điện thoại bé có thể dẫn đến vỡ giao diện
+3.Mã nguồn khó bảo trì: Việc lồng hàng đống những thẻ <table>, <th>,<td> dẫn đến việc sau này thay đổi thiết kế sẽ gặp khó khăn thay vào đó sử dụng flexbox và CSS Grid sẽ tốt hơn
