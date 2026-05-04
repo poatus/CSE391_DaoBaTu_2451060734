@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation Test</title>
+</head>
+<body>
+    <form>
+        <label>TH 1 (Required):</label>
+        <input type="text" required value="">
+
+        <label>TH 2 (Email):</label>
+        <input type="email" value="abc">
+
+        <label>TH 3 (Number Max):</label>
+        <input type="number" min="1" max="10" value="15">
+
+        <label>TH 4 (Pattern):</label>
+        <input type="text" pattern="[0-9]{10}" value="abc123">
+
+        <label>TH 5 (Minlength):</label>
+        <input type="password" minlength="8" value="123">
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
