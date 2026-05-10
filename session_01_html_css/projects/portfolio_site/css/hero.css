@@ -1,0 +1,43 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color:#8b5cf6;
+    padding: 20px 20px;
+}
+.hero h1 {
+    font-size: 60px;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+}
+.hero p {
+    font-size: 22px;
+    color: #FFFFFF;
+    font-weight: 300;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    opacity: 0.9; 
+}
+.highlight {
+    color: #FFC107; 
+}
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #FFFFFF;
+    color: #7B61FF;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 50px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Tạo độ nổi cho nút */
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
