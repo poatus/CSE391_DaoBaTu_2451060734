@@ -7,19 +7,17 @@
     margin-bottom: 2rem;
     color: #1e293b;
 }
-
-/* Các nút lọc (Filter Buttons) */
 .portfolio-filters {
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-bottom: 3rem;
-    flex-wrap: wrap; /* Tránh bị vỡ layout trên điện thoại */
+    flex-wrap: wrap; 
 }
 
 .filter-btn {
     background: transparent;
-    border: 2px solid var(--color-primary); /* Đảm bảo bạn có khai báo biến này ở root nhé */
+    border: 2px solid var(--color-primary);
     color: var(--color-primary);
     padding: 0.5rem 1.5rem;
     border-radius: 25px;
@@ -34,17 +32,17 @@
     color: white;
 }
 
-/* --- PORTFOLIO GRID & HOVER EFFECTS --- */
+
 .portfolio-grid {
     display: grid;
-    /* Mặc định trên desktop là 3 cột */
+   
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
 
 .portfolio-item {
     position: relative;
-    overflow: hidden; /* Để ảnh không bị tràn ra ngoài khi zoom */
+    overflow: hidden; 
     border-radius: 12px;
 }
 
@@ -54,14 +52,14 @@
 
 .portfolio-item img {
     width: 100%;
-    aspect-ratio: 4/3; /* Tỷ lệ vàng cho ảnh thẻ */
+    aspect-ratio: 4/3;
     object-fit: cover;
-    transition: transform 0.4s ease; /* Thời gian chuyển động zoom */
+    transition: transform 0.4s ease; 
     display: block;
 }
 
 .portfolio-item:hover img {
-    transform: scale(1.1); /* Zoom ảnh to lên 10% */
+    transform: scale(1.1);
 }
 
 .portfolio-overlay {
@@ -77,7 +75,7 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: 1.5rem;
-    opacity: 0; /* Ẩn đi khi bình thường */
+    opacity: 0;
     transition: opacity 0.3s ease;
     text-align: left;
     color: white;
@@ -89,7 +87,7 @@
 }
 
 .portfolio-item:hover .portfolio-overlay {
-    opacity: 1; /* Hiện overlay khi hover */
+    opacity: 1; 
 }
 .lightbox {
     position: fixed;
@@ -103,8 +101,6 @@
     transition: all 0.3s ease;
     z-index: 2000;
 }
-
-/* Đây là phép màu: Khi URL có đuôi #lightbox-X thì nó sẽ hiện ra */
 .lightbox:target {
     opacity: 1;
     visibility: visible;
@@ -112,7 +108,7 @@
 
 .lightbox img {
     max-width: 90%;
-    max-height: 90vh; /* Giới hạn chiều cao bằng 90% màn hình */
+    max-height: 90vh; 
     border-radius: 8px;
 }
 
@@ -127,5 +123,5 @@
 }
 
 .lightbox-close:hover {
-    color: #ff4757; /* Chuyển màu đỏ khi đưa chuột vào dấu X */
+    color: #ff4757; 
 }
