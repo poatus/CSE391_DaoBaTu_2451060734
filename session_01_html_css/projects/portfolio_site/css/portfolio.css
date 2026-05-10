@@ -1,0 +1,131 @@
+.portfolio-section {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.portfolio-section h2 {
+    margin-bottom: 2rem;
+    color: #1e293b;
+}
+
+/* Các nút lọc (Filter Buttons) */
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap; /* Tránh bị vỡ layout trên điện thoại */
+}
+
+.filter-btn {
+    background: transparent;
+    border: 2px solid var(--color-primary); /* Đảm bảo bạn có khai báo biến này ở root nhé */
+    color: var(--color-primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--color-primary);
+    color: white;
+}
+
+/* --- PORTFOLIO GRID & HOVER EFFECTS --- */
+.portfolio-grid {
+    display: grid;
+    /* Mặc định trên desktop là 3 cột */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden; /* Để ảnh không bị tràn ra ngoài khi zoom */
+    border-radius: 12px;
+}
+
+.portfolio-link {
+    display: block;
+}
+
+.portfolio-item img {
+    width: 100%;
+    aspect-ratio: 4/3; /* Tỷ lệ vàng cho ảnh thẻ */
+    object-fit: cover;
+    transition: transform 0.4s ease; /* Thời gian chuyển động zoom */
+    display: block;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1); /* Zoom ảnh to lên 10% */
+}
+
+.portfolio-overlay {
+    position: absolute;
+    inset: 0; /* Cách viết ngắn gọn của top:0; bottom:0; left:0; right:0; */
+    background: linear-gradient(
+        to top,
+        rgba(30, 41, 59, 0.95) 0%,
+        rgba(30, 41, 59, 0.6) 50%,
+        transparent 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    opacity: 0; /* Ẩn đi khi bình thường */
+    transition: opacity 0.3s ease;
+    text-align: left;
+    color: white;
+}
+
+.portfolio-overlay h3 {
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1; /* Hiện overlay khi hover */
+}
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 2000;
+}
+
+/* Đây là phép màu: Khi URL có đuôi #lightbox-X thì nó sẽ hiện ra */
+.lightbox:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90vh; /* Giới hạn chiều cao bằng 90% màn hình */
+    border-radius: 8px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    color: white;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    color: #ff4757; /* Chuyển màu đỏ khi đưa chuột vào dấu X */
+}
