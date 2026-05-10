@@ -1,0 +1,42 @@
+.about-section {
+    padding: 5rem 0;
+    background-color: #ffffff;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-image {
+    text-align: center;
+}
+
+.about-image img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    /* Tạo viền glow màu xanh tím giống thiết kế */
+    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.1), 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+.about-content h2 {
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+}
+
+.about-content .lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #475569;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.about-content p:not(.lead) {
+    color: #64748b;
+    line-height: 1.6;
+}
