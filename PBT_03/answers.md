@@ -188,3 +188,86 @@ p { color: purple !important; } /* Sẽ thắng cả inline style */
 8. `.top-bar.dark h1` - Multiple class + descendant, chọn h1 trong element có cả 2 class
 
 ---
+### Câu A3 (7đ) — Box Model — Tính toán kích thước
+
+#### Trường hợp 1: content-box (mặc định)
+```css
+.box-1 {
+    width: 400px;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 10px;
+}
+```
+
+**Tính toán:**
+- Content width: 400px
+- Padding: 20px × 2 = 40px
+- Border: 5px × 2 = 10px
+- Margin: 10px × 2 = 20px
+
+→ **Chiều rộng hiển thị** = 400 + 40 + 10 = **450px**
+→ **Không gian chiếm trên trang** = 450 + 20 = **470px** (bao gồm margin)
+
+**Giải thích:** Với `content-box`, `width` chỉ áp dụng cho content. Padding và border được CỘNG THÊM vào ngoài.
+
+#### Trường hợp 2: border-box
+```css
+.box-2 {
+    box-sizing: border-box;
+    width: 400px;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 10px;
+}
+```
+
+**Tính toán:**
+- Total width (bao gồm padding + border): 400px
+- Padding: 20px × 2 = 40px
+- Border: 5px × 2 = 10px
+- Content width: 400 - 40 - 10 = 350px
+
+→ **Chiều rộng hiển thị** = **400px** (đúng như khai báo)
+→ **Kích thước content thực tế** = **350px**
+→ **Không gian chiếm trên trang** = 400 + 20 = **420px** (bao gồm margin)
+
+**Giải thích:** Với `border-box`, `width` bao gồm content + padding + border. Browser tự động tính content width = 400 - padding - border.
+
+#### Trường hợp 3: Margin collapse
+```css
+.box-a { margin-bottom: 25px; }
+.box-b { margin-top: 40px; }
+```
+
+→ **Khoảng cách giữa box-a và box-b** = **40px**
+
+**Giải thích tại sao KHÔNG PHẢI 65px:**
+
+Đây là hiện tượng **Margin Collapse** (gộp margin). Khi 2 margins dọc (vertical) gặp nhau:
+- Chúng KHÔNG cộng lại
+- Chỉ lấy giá trị LỚN HƠN
+- 25px và 40px → chọn 40px
+
+**Quy tắc Margin Collapse:**
+1. Chỉ xảy ra với **vertical margins** (top/bottom)
+2. Horizontal margins (left/right) KHÔNG collapse
+3. Lấy giá trị **lớn nhất** trong các margins
+4. Không xảy ra nếu có border, padding, hoặc content ngăn cách
+5. Không xảy ra với flexbox hoặc grid items
+
+#### Câu hỏi nâng cao: Margin âm
+```css
+.box-a { margin-bottom: -10px; }
+.box-b { margin-top: 40px; }
+```
+
+→ **Khoảng cách** = 40 + (-10) = **30px**
+
+**Giải thích:**
+- Khi có margin âm, công thức: margin dương + margin âm
+- 40px + (-10px) = 30px
+- Margin âm "kéo" element lại gần hơn
+- Nếu cả 2 đều âm: lấy giá trị âm nhiều nhất (ví dụ: -10px và -20px → -20px)
+
+---
