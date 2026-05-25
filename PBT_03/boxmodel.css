@@ -1,0 +1,332 @@
+/* Bài B2 - Box Model Lab CSS */
+
+/* Basic reset and styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #3498db;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+}
+
+h3 {
+    color: #2c3e50;
+}
+
+code {
+    background-color: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    color: #e74c3c;
+}
+
+/* Section styling */
+.demo-section {
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   PHẦN 1: Content-box vs Border-box Demo
+   ======================================== */
+
+.comparison {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.box-wrapper {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+/* Hộp 1: Content-box (mặc định) */
+.box-content {
+    box-sizing: content-box; /* Mặc định */
+    width: 300px;
+    padding: 20px;
+    border: 5px solid #e74c3c;
+    background-color: #ffebee;
+    margin: 20px auto;
+}
+
+/* Hộp 2: Border-box */
+.box-border {
+    box-sizing: border-box;
+    width: 300px;
+    padding: 20px;
+    border: 5px solid #27ae60;
+    background-color: #e8f5e9;
+    margin: 20px auto;
+}
+
+.box p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.note {
+    font-size: 14px;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.note strong {
+    color: #e74c3c;
+    font-size: 16px;
+}
+
+/* ========================================
+   PHẦN 2: Layout 3 cột
+   ======================================== */
+
+/* Container cho layout bị vỡ (KHÔNG dùng border-box) */
+.container-broken {
+    width: 1000px;
+    margin: 20px auto;
+    background-color: #fff3cd;
+    border: 3px dashed #ff6b6b;
+    padding: 10px;
+    overflow: hidden; /* Clear float */
+}
+
+.sidebar-broken,
+.content-broken,
+.ads-broken {
+    /* KHÔNG có box-sizing: border-box */
+    float: left;
+    background-color: #e3f2fd;
+    border: 2px solid #2196f3;
+    min-height: 150px;
+}
+
+.sidebar-broken {
+    width: 250px;
+    padding: 15px;
+    /* Thực tế: 250 + 30 + 4 = 284px */
+}
+
+.content-broken {
+    width: 500px;
+    padding: 20px;
+    background-color: #fff9c4;
+    /* Thực tế: 500 + 40 + 4 = 544px */
+}
+
+.ads-broken {
+    width: 250px;
+    padding: 15px;
+    /* Thực tế: 250 + 30 + 4 = 284px */
+    /* Tổng: 284 + 544 + 284 = 1112px > 1000px → BỊ VỠ! */
+}
+
+/* Container cho layout đã sửa (Dùng border-box) */
+.container-fixed {
+    width: 1000px;
+    margin: 20px auto;
+    background-color: #d4edda;
+    border: 3px solid #28a745;
+    padding: 10px;
+    overflow: hidden; /* Clear float */
+}
+
+.sidebar-fixed,
+.content-fixed,
+.ads-fixed {
+    box-sizing: border-box; /* KEY: Dùng border-box */
+    float: left;
+    background-color: #e3f2fd;
+    border: 2px solid #2196f3;
+    min-height: 150px;
+}
+
+.sidebar-fixed {
+    width: 250px;
+    padding: 15px;
+    /* Thực tế: 250px (bao gồm padding + border) ✓ */
+}
+
+.content-fixed {
+    width: 500px;
+    padding: 20px;
+    background-color: #fff9c4;
+    /* Thực tế: 500px (bao gồm padding + border) ✓ */
+}
+
+.ads-fixed {
+    width: 250px;
+    padding: 15px;
+    /* Thực tế: 250px (bao gồm padding + border) ✓ */
+    /* Tổng: 250 + 500 + 250 = 1000px ✓ HOÀN HẢO! */
+}
+
+.sidebar-broken h4,
+.content-broken h4,
+.ads-broken h4,
+.sidebar-fixed h4,
+.content-fixed h4,
+.ads-fixed h4 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+/* Message styling */
+.warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.error {
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    color: #721c24;
+    font-weight: bold;
+}
+
+.success {
+    background-color: #d4edda;
+    border-left: 4px solid #28a745;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    color: #155724;
+    font-weight: bold;
+}
+
+/* Explanation box */
+.explanation {
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.explanation h3 {
+    margin-top: 0;
+    color: #495057;
+}
+
+.explanation ul {
+    line-height: 1.8;
+}
+
+.explanation li {
+    margin-bottom: 10px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+
+thead {
+    background-color: #3498db;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+tr.total {
+    background-color: #fff3cd !important;
+    font-weight: bold;
+}
+
+tr.total td {
+    border-top: 3px solid #ffc107;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 8px;
+}
+
+footer code {
+    background-color: #34495e;
+    color: #3498db;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .container-broken,
+    .container-fixed {
+        width: 95%;
+    }
+    
+    .sidebar-broken,
+    .content-broken,
+    .ads-broken,
+    .sidebar-fixed,
+    .content-fixed,
+    .ads-fixed {
+        width: 100%;
+        float: none;
+        margin-bottom: 10px;
+    }
+}
+
+/*
+TỔNG KẾT:
+
+1. Content-box (mặc định):
+   - width chỉ tính content
+   - Padding và border được CỘNG THÊM vào ngoài
+   - Khó tính toán layout chính xác
+
+2. Border-box:
+   - width bao gồm content + padding + border
+   - Browser tự động tính content width
+   - Dễ dàng tính toán layout
+
+3. Best Practice:
+   * { box-sizing: border-box; }
+   
+   Luôn thêm dòng này vào đầu mọi dự án CSS!
+*/

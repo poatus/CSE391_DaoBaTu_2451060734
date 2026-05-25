@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Lab - Bài B2</title>
+    <link rel="stylesheet" href="boxmodel.css">
+</head>
+<body>
+    <h1>Box Model Lab - Bài B2</h1>
+    
+    <!-- Phần 1: Chứng minh content-box vs border-box -->
+    <section class="demo-section">
+        <h2>Phần 1: Content-box vs Border-box</h2>
+        <p>Cả 2 hộp đều có: <code>width: 300px; padding: 20px; border: 5px solid;</code></p>
+        
+        <div class="comparison">
+            <div class="box-wrapper">
+                <h3>Hộp 1: content-box (mặc định)</h3>
+                <div class="box box-content">
+                    <p>Content-box</p>
+                    <p>Width = 300px</p>
+                    <p>Padding = 20px</p>
+                    <p>Border = 5px</p>
+                    <p><strong>Tổng = 350px</strong></p>
+                </div>
+                <p class="note">Chiều rộng thực tế: 300 + 40 + 10 = <strong>350px</strong></p>
+            </div>
+            
+            <div class="box-wrapper">
+                <h3>Hộp 2: border-box</h3>
+                <div class="box box-border">
+                    <p>Border-box</p>
+                    <p>Width = 300px</p>
+                    <p>Padding = 20px</p>
+                    <p>Border = 5px</p>
+                    <p><strong>Tổng = 300px</strong></p>
+                </div>
+                <p class="note">Chiều rộng thực tế: <strong>300px</strong> (content = 250px)</p>
+            </div>
+        </div>
+        
+        <div class="explanation">
+            <h3>📝 Giải thích:</h3>
+            <ul>
+                <li><strong>Content-box:</strong> width chỉ tính content. Padding và border được CỘNG THÊM.</li>
+                <li><strong>Border-box:</strong> width bao gồm content + padding + border. Browser tự tính content.</li>
+                <li><strong>Kết luận:</strong> border-box giúp tính toán layout dễ dàng hơn!</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Phần 2: Layout 3 cột -->
+    <section class="demo-section">
+        <h2>Phần 2: Layout 3 cột (1000px)</h2>
+        
+        <h3>Trường hợp 1: KHÔNG dùng border-box (BỊ VỠ)</h3>
+        <p class="warning">⚠️ Tổng chiều rộng: 250 + 500 + 250 = 1000px (theo khai báo)<br>
+        Nhưng thực tế: (250+30) + (500+40) + (250+30) = 1100px > 1000px → Layout bị vỡ!</p>
+        
+        <div class="container-broken">
+            <div class="sidebar-broken">
+                <h4>Sidebar (250px)</h4>
+                <p>padding: 15px</p>
+                <p>Thực tế: 280px</p>
+            </div>
+            <div class="content-broken">
+                <h4>Content (500px)</h4>
+                <p>padding: 20px</p>
+                <p>Thực tế: 540px</p>
+            </div>
+            <div class="ads-broken">
+                <h4>Ads (250px)</h4>
+                <p>padding: 15px</p>
+                <p>Thực tế: 280px</p>
+            </div>
+        </div>
+        <p class="error">❌ Cột Ads bị đẩy xuống dòng mới vì tổng > 1000px</p>
+        
+        <h3>Trường hợp 2: Dùng border-box (HOẠT ĐỘNG)</h3>
+        <p class="success">✅ Với border-box, width bao gồm padding → Tổng đúng 1000px</p>
+        
+        <div class="container-fixed">
+            <div class="sidebar-fixed">
+                <h4>Sidebar (250px)</h4>
+                <p>padding: 15px</p>
+                <p>Thực tế: 250px ✓</p>
+            </div>
+            <div class="content-fixed">
+                <h4>Content (500px)</h4>
+                <p>padding: 20px</p>
+                <p>Thực tế: 500px ✓</p>
+            </div>
+            <div class="ads-fixed">
+                <h4>Ads (250px)</h4>
+                <p>padding: 15px</p>
+                <p>Thực tế: 250px ✓</p>
+            </div>
+        </div>
+        <p class="success">✅ Tất cả 3 cột nằm cạnh nhau hoàn hảo!</p>
+        
+        <div class="explanation">
+            <h3>📊 So sánh:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cột</th>
+                        <th>Width khai báo</th>
+                        <th>Padding</th>
+                        <th>Content-box (thực tế)</th>
+                        <th>Border-box (thực tế)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sidebar</td>
+                        <td>250px</td>
+                        <td>15px × 2</td>
+                        <td>280px</td>
+                        <td>250px ✓</td>
+                    </tr>
+                    <tr>
+                        <td>Content</td>
+                        <td>500px</td>
+                        <td>20px × 2</td>
+                        <td>540px</td>
+                        <td>500px ✓</td>
+                    </tr>
+                    <tr>
+                        <td>Ads</td>
+                        <td>250px</td>
+                        <td>15px × 2</td>
+                        <td>280px</td>
+                        <td>250px ✓</td>
+                    </tr>
+                    <tr class="total">
+                        <td><strong>TỔNG</strong></td>
+                        <td>1000px</td>
+                        <td>-</td>
+                        <td><strong>1100px ❌</strong></td>
+                        <td><strong>1000px ✅</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <p>💡 <strong>Best Practice:</strong> Luôn thêm <code>* { box-sizing: border-box; }</code> vào đầu mọi dự án CSS!</p>
+    </footer>
+</body>
+</html>
