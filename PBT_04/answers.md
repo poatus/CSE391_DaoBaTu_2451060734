@@ -133,3 +133,29 @@
 - 3 hàng: hàng 1 đủ 3 items, hàng 2 đủ 3 items, hàng 3 chỉ có 1 item (item 7 nằm bên trái)
 
 ---
+## PHẦN C — SUY LUẬN (20 điểm)
+
+### Câu C1 (10đ) — Flexbox vs Grid: Khi nào dùng gì?
+
+**1. Navigation bar ngang (logo + menu + buttons)**
+- **Dùng: Flexbox**
+- **Lý do:** Layout 1 chiều (ngang), cần phân bố items linh hoạt (logo trái, menu giữa, buttons phải). `justify-content: space-between` hoàn hảo cho trường hợp này.
+
+**2. Lưới ảnh Instagram (3 cột đều nhau, số ảnh không biết trước)**
+- **Dùng: Grid**
+- **Lý do:** Layout 2 chiều (hàng + cột), cần cột đều nhau. `grid-template-columns: repeat(3, 1fr)` tự động wrap xuống hàng mới. Flexbox cũng được nhưng Grid sạch hơn.
+
+**3. Layout blog: main content + sidebar**
+- **Dùng: Grid**
+- **Lý do:** Layout 2 chiều với tỷ lệ cố định. `grid-template-columns: 1fr 300px` (main + sidebar). Grid giữ cột sidebar cố định tốt hơn Flexbox.
+
+**4. Footer với 4 cột thông tin (Về chúng tôi, Liên kết, Hỗ trợ, Liên hệ)**
+- **Dùng: Flexbox hoặc Grid**
+- **Lý do:** Cả 2 đều OK. Flexbox nếu muốn linh hoạt (flex: 1). Grid nếu muốn kiểm soát chặt chẽ (repeat(4, 1fr)). Tôi chọn **Flexbox** vì đơn giản hơn cho layout 1 hàng.
+
+**5. Card sản phẩm (ảnh trên, text giữa, nút dưới — nút luôn dính đáy)**
+- **Dùng: Flexbox**
+- **Lý do:** Layout 1 chiều (dọc), cần nút dính đáy. `flex-direction: column` + `margin-top: auto` trên button = hoàn hảo. Grid không có trick này.
+
+---
+
