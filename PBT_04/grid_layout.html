@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài B3 - Grid Layout E-Commerce</title>
+    <link rel="stylesheet" href="grid.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- HEADER - Full width -->
+        <header class="header">
+            <div class="logo">ShopGrid</div>
+            <nav class="nav">
+                <a href="#home">Trang chủ</a>
+                <a href="#products">Sản phẩm</a>
+                <a href="#deals">Khuyến mãi</a>
+                <a href="#contact">Liên hệ</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-cart">🛒 Giỏ hàng (3)</button>
+                <button class="btn-account">👤 Tài khoản</button>
+            </div>
+        </header>
+
+        <!-- HERO BANNER - Full width -->
+        <section class="hero-banner">
+            <div class="hero-content">
+                <h1>Siêu Sale Cuối Tuần</h1>
+                <p>Giảm giá lên đến 50% cho tất cả sản phẩm công nghệ</p>
+                <button class="btn-hero">Mua ngay</button>
+            </div>
+        </section>
+
+        <!-- SIDEBAR - Filter -->
+        <aside class="sidebar">
+            <h3>Bộ lọc sản phẩm</h3>
+            
+            <div class="filter-section">
+                <h4>Danh mục</h4>
+                <label><input type="checkbox"> Điện thoại</label>
+                <label><input type="checkbox"> Laptop</label>
+                <label><input type="checkbox"> Tablet</label>
+                <label><input type="checkbox"> Phụ kiện</label>
+                <label><input type="checkbox"> Đồng hồ</label>
+            </div>
+
+            <div class="filter-section">
+                <h4>Thương hiệu</h4>
+                <label><input type="checkbox"> Apple</label>
+                <label><input type="checkbox"> Samsung</label>
+                <label><input type="checkbox"> Xiaomi</label>
+                <label><input type="checkbox"> Sony</label>
+            </div>
+
+            <div class="filter-section">
+                <h4>Khoảng giá</h4>
+                <label><input type="checkbox"> Dưới 5 triệu</label>
+                <label><input type="checkbox"> 5-10 triệu</label>
+                <label><input type="checkbox"> 10-20 triệu</label>
+                <label><input type="checkbox"> Trên 20 triệu</label>
+            </div>
+
+            <button class="btn-filter">Áp dụng bộ lọc</button>
+        </aside>
+
+        <!-- MAIN CONTENT - Product Grid -->
+        <main class="main-content">
+            <h2>Sản phẩm nổi bật</h2>
+            
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-item">
+                    <div class="product-badge">-30%</div>
+                    <img src="https://via.placeholder.com/250x200/FF6B6B/fff?text=iPhone+15" alt="iPhone 15">
+                    <h3>iPhone 15 Pro Max</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ (128)</div>
+                    <p class="product-price">
+                        <span class="old-price">35.990.000đ</span>
+                        <span class="new-price">24.990.000đ</span>
+                    </p>
+                    <button class="btn-add-cart">Thêm vào giỏ</button>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/250x200/4ECDC4/fff?text=MacBook+Pro" alt="MacBook Pro">
+                    <h3>MacBook Pro M3</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ (95)</div>
+                    <p class="product-price">
+                        <span class="new-price">42.990.000đ</span>
+                    </p>
+                    <button class="btn-add-cart">Thêm vào giỏ</button>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-item">
+                    <div class="product-badge">HOT</div>
+                    <img src="https://via.placeholder.com/250x200/95E1D3/fff?text=iPad+Pro" alt="iPad Pro">
+                    <h3>iPad Pro 12.9" M2</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ (87)</div>
+                    <p class="product-price">
+                        <span class="new-price">29.990.000đ</span>
+                    </p>
+                    <button class="btn-add-cart">Thêm vào giỏ</button>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/250x200/F38181/fff?text=Samsung+S24" alt="Samsung S24">
+                    <h3>Samsung Galaxy S24 Ultra</h3>
+                    <div class="product-rating">⭐⭐⭐⭐☆ (76)</div>
+                    <p class="product-price">
+                        <span class="new-price">31.990.000đ</span>
+                    </p>
+                    <button class="btn-add-cart">Thêm vào giỏ</button>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-item">
+                    <div class="product-badge">-20%</div>
+                    <img src="https://via.placeholder.com/250x200/AA96DA/fff?text=AirPods+Pro" alt="AirPods Pro">
+                    <h3>AirPods Pro 2</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ (142)</div>
+                    <p class="product-price">
+                        <span class="old-price">6.990.000đ</span>
+                        <span class="new-price">5.590.000đ</span>
+                    </p>
+                    <button class="btn-add-cart">Thêm vào giỏ</button>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/250x200/FCBAD3/fff?text=Apple+Watch" alt="Apple Watch">
+                    <h3>Apple Watch Series 9</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ (103)</div>
+                    <p class="product-price">
+                        <span class="new-price">10.990.000đ</span>
+                    </p>
+                    <button class="btn-add-cart">Thêm vào giỏ</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- ADS SIDEBAR -->
+        <aside class="ads-sidebar">
+            <div class="ad-banner">
+                <h3>🎁 Ưu đãi đặc biệt</h3>
+                <p>Giảm thêm 10% khi mua 2 sản phẩm</p>
+                <button class="btn-ad">Xem ngay</button>
+            </div>
+
+            <div class="ad-banner">
+                <h3>📦 Miễn phí vận chuyển</h3>
+                <p>Cho đơn hàng từ 500.000đ</p>
+            </div>
+
+            <div class="ad-banner">
+                <h3>💳 Trả góp 0%</h3>
+                <p>Lãi suất 0% qua thẻ tín dụng</p>
+            </div>
+
+            <div class="ad-banner">
+                <img src="https://via.placeholder.com/180x250/667eea/fff?text=Banner+Quang+Cao" alt="Ad Banner">
+            </div>
+        </aside>
+
+        <!-- FOOTER - Full width -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Về chúng tôi</h4>
+                    <p>ShopGrid - Nơi mua sắm công nghệ uy tín</p>
+                    <p>📍 123 Đường ABC, Quận 1, TP.HCM</p>
+                    <p>📞 1900-xxxx</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Chính sách</h4>
+                    <a href="#">Chính sách bảo hành</a>
+                    <a href="#">Chính sách đổi trả</a>
+                    <a href="#">Chính sách vận chuyển</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ trợ</h4>
+                    <a href="#">Hướng dẫn mua hàng</a>
+                    <a href="#">Câu hỏi thường gặp</a>
+                    <a href="#">Liên hệ</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Theo dõi chúng tôi</h4>
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShopGrid. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
