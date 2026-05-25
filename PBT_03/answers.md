@@ -271,3 +271,66 @@ p { color: purple !important; } /* Sẽ thắng cả inline style */
 - Nếu cả 2 đều âm: lấy giá trị âm nhiều nhất (ví dụ: -10px và -20px → -20px)
 
 ---
+### Câu A4 (5đ) — Specificity (Độ ưu tiên)
+
+```css
+p { color: black; }                    /* Rule A */
+.price { color: blue; }               /* Rule B */
+#main-price { color: red; }           /* Rule C */
+p.price { color: green; }             /* Rule D */
+```
+
+#### 1. Tính specificity score (a, b, c) cho mỗi rule
+
+**Công thức tính specificity: (inline, id, class, element)**
+
+- **Rule A:** `p` → **(0, 0, 0, 1)** = 1
+  - 0 inline, 0 id, 0 class, 1 element
+  
+- **Rule B:** `.price` → **(0, 0, 1, 0)** = 10
+  - 0 inline, 0 id, 1 class, 0 element
+  
+- **Rule C:** `#main-price` → **(0, 1, 0, 0)** = 100
+  - 0 inline, 1 id, 0 class, 0 element
+  
+- **Rule D:** `p.price` → **(0, 0, 1, 1)** = 11
+  - 0 inline, 0 id, 1 class, 1 element
+
+**Thứ tự từ thấp đến cao:** A (1) < B (10) < D (11) < C (100)
+
+#### 2. Element sẽ có màu gì? Giải thích
+
+**Trả lời:** Element sẽ có màu **RED** (đỏ).
+
+**Giải thích:**
+- Rule C có specificity cao nhất (100)
+- ID selector luôn thắng class và element selector
+- Không quan trọng thứ tự khai báo trong CSS, chỉ quan trọng specificity
+
+#### 3. Nếu thêm inline style: `<p class="price" id="main-price" style="color: orange;">`
+
+**Trả lời:** Element sẽ có màu **ORANGE** (cam).
+
+**Giải thích:**
+- Inline style có specificity = **(1, 0, 0, 0)** = 1000
+- Cao hơn tất cả các rules trong stylesheet
+- Inline style luôn thắng (trừ khi có !important trong CSS)
+
+#### 4. Nếu Rule A thêm `!important`: `p { color: black !important; }`
+
+**Trả lời:** Element sẽ có màu **BLACK** (đen).
+
+**Giải thích:**
+- `!important` override TẤT CẢ các rules khác, kể cả inline style
+- Thứ tự ưu tiên cuối cùng:
+  1. CSS với `!important` (cao nhất)
+  2. Inline style
+  3. ID selector
+  4. Class selector
+  5. Element selector
+  
+**Lưu ý:** Nếu nhiều rules đều có `!important`, thì so sánh specificity giữa chúng. Nếu specificity bằng nhau, rule khai báo SAU sẽ thắng.
+
+**Best practice:** Tránh dùng `!important` trừ khi thực sự cần thiết (override third-party CSS, utility classes). Nó làm CSS khó maintain.
+
+---
