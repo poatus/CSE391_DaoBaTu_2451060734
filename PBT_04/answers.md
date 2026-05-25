@@ -158,4 +158,78 @@
 - **Lý do:** Layout 1 chiều (dọc), cần nút dính đáy. `flex-direction: column` + `margin-top: auto` trên button = hoàn hảo. Grid không có trick này.
 
 ---
+### Câu C2 (10đ) — Debug Flexbox
+
+**Lỗi 1: Cards không đều chiều cao — nút "Mua" bị nhảy lên/xuống**
+
+**Nguyên nhân:**
+- Cards có chiều cao khác nhau (do text dài ngắn khác nhau)
+- Nút "Mua" không được đẩy xuống đáy card
+
+**Sửa:**
+```css
+.card-container { 
+    display: flex; 
+    flex-wrap: wrap; 
+}
+.card { 
+    width: 30%; 
+    margin: 1.5%;
+    display: flex;              /* ✅ Thêm */
+    flex-direction: column;     /* ✅ Thêm */
+}
+.card img { width: 100%; }
+.card h3 { font-size: 18px; }
+.card .btn { 
+    padding: 10px;
+    margin-top: auto;           /* ✅ Thêm - Đẩy nút xuống đáy */
+}
+```
+
+---
+
+**Lỗi 2: Muốn items nằm giữa cả ngang lẫn dọc trong container 100vh, nhưng item vẫn dính góc trái trên**
+
+**Nguyên nhân:**
+- Thiếu `justify-content` (căn ngang) và `align-items` (căn dọc)
+
+**Sửa:**
+```css
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;    /* ✅ Thêm - Căn giữa ngang */
+    align-items: center;        /* ✅ Thêm - Căn giữa dọc */
+}
+.hero-content {
+    text-align: center;
+}
+```
+
+---
+
+**Lỗi 3: Sidebar bị co lại khi content quá dài**
+
+**Nguyên nhân:**
+- Flexbox mặc định cho phép items co lại (`flex-shrink: 1`)
+- Sidebar width 250px bị co khi content dài
+
+**Sửa:**
+```css
+.layout { display: flex; }
+.sidebar { 
+    width: 250px;
+    flex-shrink: 0;             /* ✅ Thêm - Không cho co lại */
+}
+.content { flex: 1; }
+```
+
+Hoặc dùng `min-width`:
+```css
+.sidebar { 
+    min-width: 250px;           /* ✅ Thay thế */
+}
+```
+
+---
 
