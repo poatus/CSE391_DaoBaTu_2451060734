@@ -1,0 +1,237 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f5f5f5;
+}
+
+/* ============================================
+   PHẦN 1: NAVBAR với FLEXBOX (10đ)
+   ============================================ */
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Logo trái, Menu giữa, Buttons phải */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 15px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo bên trái */
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+}
+
+/* Menu items ở giữa */
+.menu-items {
+    display: flex;
+    list-style: none;
+    gap: 30px; /* Cách đều nhau */
+    align-items: center;
+}
+
+.menu-items li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.menu-items li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    text-decoration: underline;
+    transform: translateY(-2px);
+}
+
+/* Auth buttons bên phải */
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn-login,
+.btn-register {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-login {
+    background: white;
+    color: #667eea;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+.btn-register {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-register:hover {
+    background: white;
+    color: #667eea;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   PHẦN 2: PRODUCT CARDS GRID với FLEXBOX (10đ)
+   ============================================ */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+/* Container dùng Flexbox với flex-wrap */
+.product-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép wrap xuống hàng mới */
+    gap: 20px; /* Khoảng cách giữa các cards */
+}
+
+/* Mỗi card = 25% - gap (4 cột) */
+.product-card {
+    flex: 0 0 calc(25% - 20px); /* 4 cột, trừ gap */
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    
+    /* Card bên trong cũng dùng flex (column direction) */
+    display: flex;
+    flex-direction: column; /* Ảnh trên, content giữa, button dưới */
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Nâng lên khi hover */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Shadow tăng */
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Card content - phần giữa */
+.card-content {
+    padding: 20px;
+    flex: 1; /* Chiếm hết không gian còn lại */
+}
+
+.card-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #667eea;
+}
+
+/* Button "Mua ngay" - luôn dính đáy card */
+.btn-buy {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: auto; /* ✅ Đẩy button xuống đáy card */
+}
+
+.btn-buy:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet: 2 cột */
+@media (max-width: 1024px) {
+    .product-card {
+        flex: 0 0 calc(50% - 20px); /* 2 cột */
+    }
+}
+
+/* Mobile: 1 cột */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .menu-items {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .product-card {
+        flex: 0 0 100%; /* 1 cột */
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .container h1 {
+        font-size: 28px;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-login,
+    .btn-register {
+        width: 100%;
+    }
+}

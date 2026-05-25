@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài B2 - Flexbox Navigation & Cards</title>
+    <link rel="stylesheet" href="flexbox.css">
+</head>
+<body>
+    <!-- Phần 1: Navbar với Flexbox -->
+    <nav class="navbar">
+        <div class="logo">TechShop</div>
+        
+        <ul class="menu-items">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        
+        <div class="auth-buttons">
+            <button class="btn-login">Login</button>
+            <button class="btn-register">Register</button>
+        </div>
+    </nav>
+
+    <!-- Phần 2: Product Cards Grid với Flexbox -->
+    <main class="container">
+        <h1>Featured Products</h1>
+        
+        <div class="product-cards-container">
+            <!-- Card 1 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/FF6B6B/fff?text=Laptop+Gaming" alt="Laptop Gaming">
+                <div class="card-content">
+                    <h3>Laptop Gaming ROG</h3>
+                    <p class="description">Intel Core i7, RTX 4060, 16GB RAM, 512GB SSD</p>
+                    <p class="price">32.990.000đ</p>
+                </div>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/4ECDC4/fff?text=iPhone+15" alt="iPhone 15">
+                <div class="card-content">
+                    <h3>iPhone 15 Pro</h3>
+                    <p class="description">Chip A17 Pro, Camera 48MP, Titanium Design</p>
+                    <p class="price">28.990.000đ</p>
+                </div>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/95E1D3/fff?text=MacBook+Air" alt="MacBook Air">
+                <div class="card-content">
+                    <h3>MacBook Air M2</h3>
+                    <p class="description">Chip M2, 8GB RAM, 256GB SSD, Màn hình Retina</p>
+                    <p class="price">24.990.000đ</p>
+                </div>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/F38181/fff?text=iPad+Pro" alt="iPad Pro">
+                <div class="card-content">
+                    <h3>iPad Pro 12.9"</h3>
+                    <p class="description">Chip M2, Màn hình Liquid Retina XDR</p>
+                    <p class="price">29.990.000đ</p>
+                </div>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/AA96DA/fff?text=Samsung+S24" alt="Samsung S24">
+                <div class="card-content">
+                    <h3>Samsung Galaxy S24 Ultra</h3>
+                    <p class="description">Snapdragon 8 Gen 3, Camera 200MP, S Pen tích hợp</p>
+                    <p class="price">31.990.000đ</p>
+                </div>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/FCBAD3/fff?text=AirPods+Pro" alt="AirPods Pro">
+                <div class="card-content">
+                    <h3>AirPods Pro 2</h3>
+                    <p class="description">Chống ồn chủ động, Âm thanh không gian</p>
+                    <p class="price">6.490.000đ</p>
+                </div>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/A8E6CF/fff?text=Apple+Watch" alt="Apple Watch">
+                <div class="card-content">
+                    <h3>Apple Watch Series 9</h3>
+                    <p class="description">GPS + Cellular, Always-On Retina Display</p>
+                    <p class="price">10.990.000đ</p>
+                </div>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/FFD3B6/fff?text=Sony+WH-1000XM5" alt="Sony Headphones">
+                <div class="card-content">
+                    <h3>Sony WH-1000XM5</h3>
+                    <p class="description">Tai nghe chống ồn hàng đầu, Pin 30 giờ</p>
+                    <p class="price">8.990.000đ</p>
+                </div>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 30px; background: #f8f9fa; margin-top: 50px;">
+        <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </footer>
+</body>
+</html>
