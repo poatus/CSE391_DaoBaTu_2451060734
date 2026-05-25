@@ -433,3 +433,88 @@ Container chỉ rộng **960px**, nhưng tổng chiều rộng thực tế của
 ```
 
 ---
+### Câu C2 (10đ) — Cascade Puzzle
+
+#### 1. "Sản phẩm A" (h2) có `font-size` = ? và `color` = ?
+
+**Trả lời:**
+- `font-size` = **20px**
+- `color` = **green**
+
+**Giải thích chi tiết:**
+
+**Font-size:**
+- `body { font-size: 16px }` → h2 kế thừa 16px
+- `.container { font-size: 14px }` → h2 kế thừa 14px (ghi đè 16px)
+- `.card .title { font-size: 20px }` → áp dụng trực tiếp cho h2.title
+- **Kết quả: 20px** (rule cụ thể nhất)
+
+**Color:**
+- `body { color: #333 }` → h2 kế thừa #333
+- `.card { color: blue }` → h2 kế thừa blue (ghi đè #333)
+- `#featured .title { color: red }` → specificity (1,1,0) = 110
+- `.highlight { color: green !important }` → specificity với !important
+- **Kết quả: green** (!important thắng tất cả)
+
+**Cascade process:**
+1. Inheritance: #333 từ body
+2. `.card`: blue (specificity 0,1,0 = 10)
+3. `#featured .title`: red (specificity 1,1,0 = 110) - cao hơn
+4. `.highlight`: green với !important - **THẮNG**
+
+#### 2. "Mô tả sản phẩm" (p trong card featured) có `color` = ?
+
+**Trả lời:** `color` = **blue**
+
+**Giải thích:**
+
+**Cascade process:**
+- `body { color: #333 }` → p kế thừa #333
+- `.card { color: blue }` → p là descendant của .card, kế thừa blue
+- `.card p { color: inherit }` → `inherit` nghĩa là lấy giá trị từ parent
+  - Parent của p là `.card` có `color: blue`
+  - `inherit` lấy blue từ .card
+- **Kết quả: blue**
+
+**Lưu ý:** `inherit` keyword buộc element kế thừa giá trị từ parent, ngay cả khi property đó không tự động kế thừa.
+
+#### 3. "Sản phẩm B" (h2) có `font-size` = ? và `color` = ?
+
+**Trả lời:**
+- `font-size` = **20px**
+- `color` = **blue**
+
+**Giải thích:**
+
+**Font-size:**
+- `body { font-size: 16px }` → kế thừa 16px
+- `.container { font-size: 14px }` → kế thừa 14px
+- `.card .title { font-size: 20px }` → áp dụng trực tiếp
+- **Kết quả: 20px**
+
+**Color:**
+- `body { color: #333 }` → kế thừa #333
+- `.card { color: blue }` → kế thừa blue
+- Không có class `.highlight` → không có green !important
+- Không có id `#featured` → không có red
+- **Kết quả: blue** (kế thừa từ .card)
+
+#### 4. "Mô tả sản phẩm B" (p.highlight) có `color` = ?
+
+**Trả lời:** `color` = **green**
+
+**Giải thích:**
+
+**Cascade process:**
+- `body { color: #333 }` → kế thừa #333
+- `.card { color: blue }` → kế thừa blue
+- `.card p { color: inherit }` → inherit blue từ .card (specificity 0,1,1 = 11)
+- `.highlight { color: green !important }` → áp dụng trực tiếp với !important
+- **Kết quả: green** (!important thắng tất cả)
+
+**Lưu ý:** 
+- `!important` override mọi rule khác, kể cả specificity cao hơn
+- `.highlight` áp dụng trực tiếp cho element (không phải kế thừa)
+- `!important` > inline style > ID > class > element
+
+---
