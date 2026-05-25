@@ -334,3 +334,102 @@ p.price { color: green; }             /* Rule D */
 **Best practice:** Tránh dùng `!important` trừ khi thực sự cần thiết (override third-party CSS, utility classes). Nó làm CSS khó maintain.
 
 ---
+## PHẦN C — DEBUG & SUY LUẬN (20 điểm)
+
+### Câu C1 (10đ) — Debug CSS Layout
+
+#### 1. Tính chiều rộng thực tế của sidebar và content
+
+**Sidebar:**
+- width: 300px
+- padding: 20px × 2 = 40px
+- border: 1px × 2 = 2px
+- **Chiều rộng thực tế** = 300 + 40 + 2 = **342px**
+
+**Content:**
+- width: 660px
+- padding: 30px × 2 = 60px
+- border: 1px × 2 = 2px
+- **Chiều rộng thực tế** = 660 + 60 + 2 = **722px**
+
+**Tổng:** 342 + 722 = **1064px**
+
+#### 2. Giải thích tại sao layout bị vỡ
+
+Container chỉ rộng **960px**, nhưng tổng chiều rộng thực tế của sidebar + content = **1064px** (vượt quá 104px).
+
+**Nguyên nhân:**
+- Mặc định `box-sizing: content-box`
+- `width` chỉ tính content, padding và border được cộng thêm
+- 1064px > 960px → không đủ chỗ nằm cạnh nhau
+- Content bị đẩy xuống dòng mới (float wrap)
+
+#### 3. Đưa ra 2 cách sửa
+
+**Cách 1: Dùng border-box (Khuyến nghị)**
+```css
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+.sidebar {
+    box-sizing: border-box; /* Thêm dòng này */
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    float: left;
+}
+.content {
+    box-sizing: border-box; /* Thêm dòng này */
+    width: 660px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    float: left;
+}
+```
+
+**Giải thích:**
+- `border-box` làm cho `width` bao gồm padding + border
+- Sidebar thực tế = 300px (đúng như khai báo)
+- Content thực tế = 660px (đúng như khai báo)
+- Tổng = 300 + 660 = 960px ✓
+
+**Cách 2: Không dùng border-box - Tính toán lại width**
+```css
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+.sidebar {
+    width: 258px; /* 300 - 40 - 2 = 258px */
+    padding: 20px;
+    border: 1px solid #ccc;
+    float: left;
+}
+.content {
+    width: 598px; /* 660 - 60 - 2 = 598px */
+    padding: 30px;
+    border: 1px solid #ccc;
+    float: left;
+}
+```
+
+**Giải thích:**
+- Tính ngược: width = chiều rộng mong muốn - padding - border
+- Sidebar: 300 - 40 - 2 = 258px
+- Content: 660 - 60 - 2 = 598px
+- Chiều rộng thực tế: (258+40+2) + (598+60+2) = 300 + 660 = 960px ✓
+
+**Nhược điểm cách 2:**
+- Khó tính toán, dễ sai
+- Khó maintain khi thay đổi padding/border
+- Không trực quan
+
+**Kết luận:** Nên dùng `box-sizing: border-box` cho mọi dự án. Thêm vào đầu CSS:
+```css
+* {
+    box-sizing: border-box;
+}
+```
+
+---
