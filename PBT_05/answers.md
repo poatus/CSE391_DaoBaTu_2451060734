@@ -112,3 +112,29 @@ Khi thiếu thẻ `<meta viewport>`, iPhone sẽ:
 ```
 
 ---
+### Câu A3 (5đ) — Media Queries
+
+**Phân tích CSS:**
+
+```css
+.container { width: 100%; padding: 10px; }
+
+@media (min-width: 576px) { .container { width: 540px; } }
+@media (min-width: 768px) { .container { width: 720px; } }
+@media (min-width: 992px) { .container { width: 960px; } }
+@media (min-width: 1200px) { .container { width: 1140px; } }
+```
+
+**Bảng kết quả:**
+
+| Chiều rộng màn hình | `.container` width | Giải thích |
+|---------------------|-------------------|------------|
+| 375px (iPhone SE) | **100%** | Không đạt breakpoint nào, dùng style mặc định |
+| 600px | **540px** | Đạt breakpoint 576px, chưa đạt 768px |
+| 800px | **720px** | Đạt breakpoint 768px, chưa đạt 992px |
+| 1000px | **960px** | Đạt breakpoint 992px, chưa đạt 1200px |
+| 1400px | **1140px** | Đạt breakpoint 1200px (cao nhất) |
+
+**Nguyên tắc:** Media query với `min-width` áp dụng khi màn hình **≥** giá trị đó. Nếu nhiều query đều đúng, query sau sẽ ghi đè query trước (cascading).
+
+---
