@@ -138,3 +138,205 @@ Khi thiếu thẻ `<meta viewport>`, iPhone sẽ:
 **Nguyên tắc:** Media query với `min-width` áp dụng khi màn hình **≥** giá trị đó. Nếu nhiều query đều đúng, query sau sẽ ghi đè query trước (cascading).
 
 ---
+### Câu A4 (5đ) — SCSS Basics
+
+#### 4 tính năng chính của SCSS:
+
+#### 1. **Variables** — Biến lưu giá trị dùng chung
+
+```scss
+// Khai báo biến
+$primary-color: #3182ce;
+$secondary-color: #805ad5;
+$font-size-base: 16px;
+$spacing-unit: 8px;
+
+// Sử dụng
+.button {
+    background-color: $primary-color;
+    font-size: $font-size-base;
+    padding: $spacing-unit * 2; // 16px
+}
+
+.header {
+    background-color: $primary-color; // Đổi 1 chỗ, tất cả đổi theo
+}
+```
+
+**Lợi ích:** Đổi màu/font/spacing chỉ cần sửa 1 chỗ, tất cả tự động cập nhật.
+
+---
+
+#### 2. **Nesting** — Viết CSS lồng nhau theo cấu trúc HTML
+
+```scss
+// SCSS
+.card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    
+    .card-header {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .card-body {
+        margin-top: 12px;
+        
+        p {
+            line-height: 1.6;
+        }
+    }
+    
+    &:hover { // & = .card (parent selector)
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    &.featured { // .card.featured
+        border-color: #3182ce;
+    }
+}
+```
+
+**Compile thành CSS:**
+```css
+.card { border: 1px solid #ddd; padding: 16px; }
+.card .card-header { font-size: 20px; font-weight: bold; }
+.card .card-body { margin-top: 12px; }
+.card .card-body p { line-height: 1.6; }
+.card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.card.featured { border-color: #3182ce; }
+```
+
+**Lợi ích:** Code gọn gàng, dễ đọc, theo cấu trúc HTML. Tránh lặp lại selector.
+
+---
+
+#### 3. **Mixins** — Hàm CSS có thể tái sử dụng
+
+```scss
+// Định nghĩa mixin
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin box-shadow($level: 1) {
+    @if $level == 1 {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    } @else if $level == 2 {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    } @else {
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+}
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == tablet {
+        @media (min-width: 768px) { @content; }
+    } @else if $breakpoint == desktop {
+        @media (min-width: 1024px) { @content; }
+    }
+}
+
+// Sử dụng
+.hero {
+    @include flex-center;
+    height: 100vh;
+}
+
+.card {
+    @include box-shadow(2);
+    
+    @include respond-to(tablet) {
+        width: 50%;
+    }
+}
+```
+
+**Lợi ích:** Tránh lặp code, dễ maintain, có thể truyền tham số.
+
+---
+
+#### 4. **@extend / Inheritance** — Kế thừa styles
+
+```scss
+// Base style
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+// Kế thừa và mở rộng
+.button-primary {
+    @extend .button;
+    background-color: #3182ce;
+    color: white;
+}
+
+.button-danger {
+    @extend .button;
+    background-color: #e53e3e;
+    color: white;
+}
+```
+
+**Compile thành:**
+```css
+.button, .button-primary, .button-danger {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-primary {
+    background-color: #3182ce;
+    color: white;
+}
+
+.button-danger {
+    background-color: #e53e3e;
+    color: white;
+}
+```
+
+**Lợi ích:** Tái sử dụng styles, giảm duplicate code.
+
+---
+
+#### Tại sao trình duyệt KHÔNG đọc được file `.scss`?
+
+**Lý do:**
+- Trình duyệt chỉ hiểu CSS thuần (`.css`), không hiểu cú pháp SCSS (variables, nesting, mixins...)
+- SCSS là ngôn ngữ preprocessor, cần **biên dịch** (compile) thành CSS trước
+
+**Bước cần thiết: SCSS → CSS**
+
+1. **Cài đặt compiler:**
+   - VS Code: Extension "Live Sass Compiler"
+   - Command line: `npm install -g sass`
+   - Build tools: Webpack, Vite, Parcel (tự động)
+
+2. **Compile:**
+   ```bash
+   # Command line
+   sass style.scss style.css
+   
+   # Watch mode (tự động compile khi save)
+   sass --watch style.scss:style.css
+   ```
+
+3. **Link file CSS vào HTML:**
+   ```html
+   <!-- KHÔNG link file .scss -->
+   <!-- <link rel="stylesheet" href="style.scss"> ❌ -->
+   
+   <!-- Link file .css đã compile -->
+   <link rel="stylesheet" href="style.css"> ✅
+   ```
+
+---
