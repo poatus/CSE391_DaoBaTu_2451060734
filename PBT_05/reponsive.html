@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Product Page - Mobile First</title>
+    <link rel="stylesheet" href="./reponsive.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <div class="logo">
+                    <h1>TechStore</h1>
+                </div>
+                
+                <nav class="nav-links">
+                    <a href="#home">Trang chủ</a>
+                    <a href="#products">Sản phẩm</a>
+                    <a href="#deals">Khuyến mãi</a>
+                    <a href="#about">Giới thiệu</a>
+                    <a href="#contact">Liên hệ</a>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="icon-btn" aria-label="Search">🔍</button>
+                    <button class="icon-btn" aria-label="Cart">🛒</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+            <div class="layout">
+                <!-- SIDEBAR (Hidden on mobile) -->
+                <aside class="sidebar">
+                    <div class="filter-section">
+                        <h3>Bộ lọc</h3>
+                        
+                        <div class="filter-group">
+                            <h4>Danh mục</h4>
+                            <label><input type="checkbox"> Laptop</label>
+                            <label><input type="checkbox"> Điện thoại</label>
+                            <label><input type="checkbox"> Tablet</label>
+                            <label><input type="checkbox"> Phụ kiện</label>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4>Giá</h4>
+                            <label><input type="checkbox"> Dưới 5 triệu</label>
+                            <label><input type="checkbox"> 5-10 triệu</label>
+                            <label><input type="checkbox"> 10-20 triệu</label>
+                            <label><input type="checkbox"> Trên 20 triệu</label>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4>Thương hiệu</h4>
+                            <label><input type="checkbox"> Apple</label>
+                            <label><input type="checkbox"> Samsung</label>
+                            <label><input type="checkbox"> Dell</label>
+                            <label><input type="checkbox"> HP</label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- PRODUCT GRID -->
+                <section class="product-section">
+                    <div class="section-header">
+                        <h2>Sản phẩm nổi bật</h2>
+                        <select class="sort-select">
+                            <option>Mới nhất</option>
+                            <option>Giá thấp đến cao</option>
+                            <option>Giá cao đến thấp</option>
+                            <option>Bán chạy</option>
+                        </select>
+                    </div>
+
+                    <div class="product-grid">
+                        <!-- Product Card 1 -->
+                        <article class="product-card">
+                            <div class="product-badge">-20%</div>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x300/3182ce/ffffff?text=Laptop+Dell" alt="Laptop Dell XPS 13">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Laptop Dell XPS 13</h3>
+                                <p class="product-desc">Intel Core i7, 16GB RAM, 512GB SSD</p>
+                                <div class="product-rating">
+                                    ⭐⭐⭐⭐⭐ <span>(128 đánh giá)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-old">25.000.000₫</span>
+                                    <span class="price-current">20.000.000₫</span>
+                                </div>
+                                <button class="btn-buy">Mua ngay</button>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 2 -->
+                        <article class="product-card">
+                            <div class="product-badge hot">HOT</div>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x300/805ad5/ffffff?text=iPhone+14" alt="iPhone 14 Pro">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">iPhone 14 Pro Max</h3>
+                                <p class="product-desc">256GB, Deep Purple, Chính hãng VN/A</p>
+                                <div class="product-rating">
+                                    ⭐⭐⭐⭐⭐ <span>(256 đánh giá)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-current">29.990.000₫</span>
+                                </div>
+                                <button class="btn-buy">Mua ngay</button>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 3 -->
+                        <article class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x300/38a169/ffffff?text=Samsung+S23" alt="Samsung Galaxy S23">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Samsung Galaxy S23 Ultra</h3>
+                                <p class="product-desc">512GB, Phantom Black, Snapdragon 8 Gen 2</p>
+                                <div class="product-rating">
+                                    ⭐⭐⭐⭐⭐ <span>(189 đánh giá)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-current">26.990.000₫</span>
+                                </div>
+                                <button class="btn-buy">Mua ngay</button>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 4 -->
+                        <article class="product-card">
+                            <div class="product-badge">-15%</div>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x300/e53e3e/ffffff?text=MacBook+Pro" alt="MacBook Pro">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">MacBook Pro 14" M2</h3>
+                                <p class="product-desc">16GB RAM, 512GB SSD, Space Gray</p>
+                                <div class="product-rating">
+                                    ⭐⭐⭐⭐⭐ <span>(95 đánh giá)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-old">52.000.000₫</span>
+                                    <span class="price-current">44.200.000₫</span>
+                                </div>
+                                <button class="btn-buy">Mua ngay</button>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 5 -->
+                        <article class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x300/f59e0b/ffffff?text=iPad+Pro" alt="iPad Pro">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">iPad Pro 11" M2</h3>
+                                <p class="product-desc">128GB, WiFi, Space Gray</p>
+                                <div class="product-rating">
+                                    ⭐⭐⭐⭐⭐ <span>(142 đánh giá)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-current">21.990.000₫</span>
+                                </div>
+                                <button class="btn-buy">Mua ngay</button>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 6 -->
+                        <article class="product-card">
+                            <div class="product-badge">NEW</div>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x300/06b6d4/ffffff?text=AirPods+Pro" alt="AirPods Pro">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">AirPods Pro Gen 2</h3>
+                                <p class="product-desc">USB-C, Chống ồn chủ động, Chính hãng</p>
+                                <div class="product-rating">
+                                    ⭐⭐⭐⭐⭐ <span>(312 đánh giá)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-current">6.490.000₫</span>
+                                </div>
+                                <button class="btn-buy">Mua ngay</button>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 7 -->
+                        <article class="product-card">
+                            <div class="product-badge">-25%</div>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x300/8b5cf6/ffffff?text=HP+Pavilion" alt="HP Pavilion">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">HP Pavilion 15</h3>
+                                <p class="product-desc">Intel i5-12500H, 8GB RAM, 512GB SSD</p>
+                                <div class="product-rating">
+                                    ⭐⭐⭐⭐☆ <span>(67 đánh giá)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-old">16.000.000₫</span>
+                                    <span class="price-current">12.000.000₫</span>
+                                </div>
+                                <button class="btn-buy">Mua ngay</button>
+                            </div>
+                        </article>
+
+                        <!-- Product Card 8 -->
+                        <article class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x300/ec4899/ffffff?text=Galaxy+Tab" alt="Galaxy Tab">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Samsung Galaxy Tab S9</h3>
+                                <p class="product-desc">11", 128GB, WiFi, Graphite</p>
+                                <div class="product-rating">
+                                    ⭐⭐⭐⭐⭐ <span>(78 đánh giá)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-current">18.990.000₫</span>
+                                </div>
+                                <button class="btn-buy">Mua ngay</button>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- ADS BAR (Desktop only) -->
+                <aside class="ads-bar">
+                    <div class="ad-card">
+                        <h4>🎁 Ưu đãi đặc biệt</h4>
+                        <p>Giảm 30% cho đơn hàng đầu tiên</p>
+                        <button class="btn-ad">Nhận ngay</button>
+                    </div>
+                    
+                    <div class="ad-card">
+                        <h4>📦 Miễn phí vận chuyển</h4>
+                        <p>Cho đơn hàng từ 500k</p>
+                    </div>
+                    
+                    <div class="ad-card">
+                        <h4>💳 Trả góp 0%</h4>
+                        <p>Duyệt nhanh trong 5 phút</p>
+                    </div>
+                    
+                    <div class="ad-card">
+                        <h4>🔧 Bảo hành chính hãng</h4>
+                        <p>Đổi mới trong 30 ngày</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Về TechStore</h4>
+                    <ul>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Tin tức</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Chính sách</h4>
+                    <ul>
+                        <li><a href="#">Chính sách bảo hành</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Chính sách vận chuyển</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Hướng dẫn thanh toán</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Tra cứu đơn hàng</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Kết nối với chúng tôi</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="YouTube">📺</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                    </div>
+                    <p class="contact-info">
+                        📞 Hotline: 1900-xxxx<br>
+                        📧 Email: support@techstore.vn
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 TechStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
