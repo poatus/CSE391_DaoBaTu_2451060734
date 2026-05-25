@@ -67,3 +67,48 @@ Khi thiếu thẻ `<meta viewport>`, iPhone sẽ:
 4. **Google Mobile-First Indexing:** Google ưu tiên phiên bản mobile khi đánh giá SEO
 
 ---
+### Câu A2 (5đ) — Breakpoints
+
+**Breakpoints chuẩn (theo Bootstrap 5):**
+
+| Tên | Kích thước | Thiết bị đại diện | Lưới sản phẩm (số cột) |
+|-----|-----------|-------------------|------------------------|
+| **xs** (Extra Small) | < 576px | iPhone SE, iPhone 12/13 Mini (dọc) | 1 cột |
+| **sm** (Small) | ≥ 576px | iPhone 12/13 Pro (ngang), Android phone | 2 cột |
+| **md** (Medium) | ≥ 768px | iPad Mini, Tablet 7-10 inch | 2-3 cột |
+| **lg** (Large) | ≥ 992px | iPad Pro, Laptop nhỏ (13 inch) | 3-4 cột |
+| **xl** (Extra Large) | ≥ 1200px | Desktop, Laptop 15 inch+ | 4-5 cột |
+| **xxl** (Extra Extra Large) | ≥ 1400px | Desktop lớn, màn hình 4K | 5-6 cột |
+
+**Ví dụ lưới sản phẩm responsive:**
+
+```css
+/* xs: 1 cột (mặc định mobile) */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+/* sm: 2 cột */
+@media (min-width: 576px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* md: 2 cột (giữ nguyên cho tablet dọc) */
+@media (min-width: 768px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* lg: 3 cột */
+@media (min-width: 992px) {
+    .product-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* xl: 4 cột */
+@media (min-width: 1200px) {
+    .product-grid { grid-template-columns: repeat(4, 1fr); }
+}
+```
+
+---
