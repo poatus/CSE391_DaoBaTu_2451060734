@@ -135,3 +135,56 @@ p { color: purple !important; } /* Sẽ thắng cả inline style */
 ```
 
 ---
+### Câu A2 (8đ) — CSS Selectors — Dự đoán kết quả
+
+**Trả lời:**
+
+```css
+1. h1                           → Chọn: "ShopTLU"
+2. .price                       → Chọn: "25.990.000đ" và "45.990.000đ" (2 elements)
+3. #app header                  → Chọn: <header> element (chứa "ShopTLU" và navigation)
+4. nav a:first-child            → Chọn: "Home" (link đầu tiên trong nav)
+5. .product.featured h2         → Chọn: "MacBook Pro"
+6. article > p                  → Chọn: "25.990.000đ", "Mô tả sản phẩm...", "45.990.000đ", "Mô tả sản phẩm..." (4 elements - tất cả <p> là con trực tiếp của article)
+7. a[href="/"]                  → Chọn: "Home"
+8. .top-bar.dark h1             → Chọn: "ShopTLU"
+```
+
+**Giải thích chi tiết:**
+
+1. `h1` - Element selector, chọn tất cả thẻ h1 → chỉ có 1 thẻ h1 chứa "ShopTLU"
+2. `.price` - Class selector, chọn tất cả elements có class="price" → 2 thẻ p
+3. `#app header` - Descendant selector, chọn header bên trong #app
+4. `nav a:first-child` - Pseudo-class selector, chọn thẻ a đầu tiên trong nav
+5. `.product.featured h2` - Multiple class + descendant, chọn h2 trong element có cả 2 class
+6. `article > p` - Child selector (>), chỉ chọn p là con TRỰC TIẾP của article
+7. `a[href="/"]` - Attribute selector, chọn link có href chính xác là "/"
+8. `.top-bar.dark h1` - Multiple class + descendant, chọn h1 trong element có cả 2 class
+
+---### Câu A2 (8đ) — CSS Selectors — Dự đoán kết quả
+
+**Trả lời:**
+
+```css
+1. h1                           → Chọn: "ShopTLU"
+2. .price                       → Chọn: "25.990.000đ" và "45.990.000đ" (2 elements)
+3. #app header                  → Chọn: <header> element (chứa "ShopTLU" và navigation)
+4. nav a:first-child            → Chọn: "Home" (link đầu tiên trong nav)
+5. .product.featured h2         → Chọn: "MacBook Pro"
+6. article > p                  → Chọn: "25.990.000đ", "Mô tả sản phẩm...", "45.990.000đ", "Mô tả sản phẩm..." (4 elements - tất cả <p> là con trực tiếp của article)
+7. a[href="/"]                  → Chọn: "Home"
+8. .top-bar.dark h1             → Chọn: "ShopTLU"
+```
+
+**Giải thích chi tiết:**
+
+1. `h1` - Element selector, chọn tất cả thẻ h1 → chỉ có 1 thẻ h1 chứa "ShopTLU"
+2. `.price` - Class selector, chọn tất cả elements có class="price" → 2 thẻ p
+3. `#app header` - Descendant selector, chọn header bên trong #app
+4. `nav a:first-child` - Pseudo-class selector, chọn thẻ a đầu tiên trong nav
+5. `.product.featured h2` - Multiple class + descendant, chọn h2 trong element có cả 2 class
+6. `article > p` - Child selector (>), chỉ chọn p là con TRỰC TIẾP của article
+7. `a[href="/"]` - Attribute selector, chọn link có href chính xác là "/"
+8. `.top-bar.dark h1` - Multiple class + descendant, chọn h1 trong element có cả 2 class
+
+---
