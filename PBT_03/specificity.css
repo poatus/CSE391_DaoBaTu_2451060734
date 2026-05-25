@@ -1,0 +1,312 @@
+/* Bài B3 - Specificity Battle CSS */
+
+/* ========================================
+   10 RULES TARGETING #demo.text.highlight
+   Sắp xếp từ THẤP đến CAO theo specificity
+   ======================================== */
+
+/* Rule 1: Element selector - Specificity (0,0,0,1) = 1 */
+p {
+    color: black;
+}
+
+/* Rule 2: Class selector - Specificity (0,0,1,0) = 10 */
+.text {
+    color: blue;
+}
+
+/* Rule 3: Class selector - Specificity (0,0,1,0) = 10 */
+.highlight {
+    color: green;
+}
+
+/* Rule 4: Element + Class - Specificity (0,0,1,1) = 11 */
+p.text {
+    color: purple;
+}
+
+/* Rule 5: Element + Class - Specificity (0,0,1,1) = 11 */
+p.highlight {
+    color: orange;
+}
+
+/* Rule 6: Multiple classes - Specificity (0,0,2,0) = 20 */
+.text.highlight {
+    color: brown;
+}
+
+/* Rule 7: Element + Multiple classes - Specificity (0,0,2,1) = 21 */
+p.text.highlight {
+    color: navy;
+}
+
+/* Rule 8: ID selector - Specificity (0,1,0,0) = 100 */
+#demo {
+    color: red;
+}
+
+/* Rule 9: ID + Class - Specificity (0,1,1,0) = 110 */
+#demo.text {
+    color: crimson;
+}
+
+/* Rule 10: ID + Multiple classes + Element - Specificity (0,1,2,1) = 121 */
+/* 🏆 WINNER - Specificity cao nhất! */
+p#demo.text.highlight {
+    color: gold;
+}
+
+/* ========================================
+   PAGE STYLING
+   ======================================== */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+h3 {
+    color: #34495e;
+    margin-top: 20px;
+}
+
+code {
+    background-color: #f4f4f4;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #e74c3c;
+    font-size: 0.95em;
+}
+
+/* Box styling */
+.explanation-box,
+.demo-box,
+.rules-table,
+.result-box,
+.experiment-box,
+.important-note {
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Demo box - Hiển thị element */
+.demo-box {
+    text-align: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.demo-box p#demo {
+    font-size: 3em;
+    font-weight: bold;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    display: inline-block;
+    /* Màu cuối cùng sẽ là GOLD từ rule 10 */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #3498db;
+    color: white;
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #e3f2fd;
+    transition: background-color 0.3s ease;
+}
+
+tr.winner {
+    background-color: #fff9c4 !important;
+    font-weight: bold;
+    border: 3px solid gold;
+}
+
+tr.winner td {
+    color: #f57c00;
+}
+
+/* Color box indicator */
+.color-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Result box */
+.result-box {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    border: 3px solid gold;
+}
+
+.result-text {
+    font-size: 1.3em;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.result-box ul {
+    line-height: 1.8;
+}
+
+.result-box li {
+    margin-bottom: 10px;
+}
+
+/* Experiment box */
+.experiment-box {
+    background-color: #e8f5e9;
+    border-left: 5px solid #4caf50;
+}
+
+.answer {
+    display: inline-block;
+    background-color: #4caf50;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Important note box */
+.important-note {
+    background-color: #fff3e0;
+    border: 3px solid #ff9800;
+}
+
+.note-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.note-content ol,
+.note-content ul {
+    line-height: 1.8;
+}
+
+.note-content li {
+    margin-bottom: 10px;
+}
+
+.note-content strong {
+    color: #d32f2f;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .demo-box p#demo {
+        font-size: 2em;
+        padding: 20px;
+    }
+    
+    table {
+        font-size: 0.85em;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+    
+    .explanation-box,
+    .demo-box,
+    .rules-table,
+    .result-box,
+    .experiment-box,
+    .important-note {
+        padding: 15px;
+    }
+}
+
+/*
+========================================
+TỔNG KẾT SPECIFICITY:
+========================================
+
+Công thức: (inline, id, class, element)
+
+1. p                        = (0,0,0,1) = 1
+2. .text                    = (0,0,1,0) = 10
+3. .highlight               = (0,0,1,0) = 10
+4. p.text                   = (0,0,1,1) = 11
+5. p.highlight              = (0,0,1,1) = 11
+6. .text.highlight          = (0,0,2,0) = 20
+7. p.text.highlight         = (0,0,2,1) = 21
+8. #demo                    = (0,1,0,0) = 100
+9. #demo.text               = (0,1,1,0) = 110
+10. p#demo.text.highlight   = (0,1,2,1) = 121 ⭐ WINNER
+
+KẾT QUẢ: Element hiển thị màu GOLD
+
+LƯU Ý:
+- Specificity luôn được ưu tiên trước thứ tự khai báo
+- Chỉ khi specificity bằng nhau, rule sau mới thắng
+- !important override tất cả (nhưng nên tránh dùng)
+- Inline style có specificity = 1000
+*/

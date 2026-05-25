@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity Battle - Bài B3</title>
+    <link rel="stylesheet" href="specificity.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Specificity Battle - Bài B3</h1>
+        
+        <div class="explanation-box">
+            <h2>🎯 Mục tiêu</h2>
+            <p>Viết 10 CSS rules khác nhau cùng target phần tử dưới đây, mỗi rule đặt <code>color</code> khác nhau.</p>
+            <p>Sắp xếp từ THẤP đến CAO theo specificity.</p>
+        </div>
+
+        <div class="demo-box">
+            <h2>Phần tử demo:</h2>
+            <p id="demo" class="text highlight">Hello World</p>
+        </div>
+
+        <div class="rules-table">
+            <h2>📊 Danh sách 10 Rules (Từ thấp đến cao)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>CSS Rule</th>
+                        <th>Specificity</th>
+                        <th>Giá trị</th>
+                        <th>Màu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><code>p { color: black; }</code></td>
+                        <td>(0, 0, 0, 1)</td>
+                        <td>1</td>
+                        <td><span class="color-box" style="background-color: black;"></span> Black</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><code>.text { color: blue; }</code></td>
+                        <td>(0, 0, 1, 0)</td>
+                        <td>10</td>
+                        <td><span class="color-box" style="background-color: blue;"></span> Blue</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><code>.highlight { color: green; }</code></td>
+                        <td>(0, 0, 1, 0)</td>
+                        <td>10</td>
+                        <td><span class="color-box" style="background-color: green;"></span> Green</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><code>p.text { color: purple; }</code></td>
+                        <td>(0, 0, 1, 1)</td>
+                        <td>11</td>
+                        <td><span class="color-box" style="background-color: purple;"></span> Purple</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><code>p.highlight { color: orange; }</code></td>
+                        <td>(0, 0, 1, 1)</td>
+                        <td>11</td>
+                        <td><span class="color-box" style="background-color: orange;"></span> Orange</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><code>.text.highlight { color: brown; }</code></td>
+                        <td>(0, 0, 2, 0)</td>
+                        <td>20</td>
+                        <td><span class="color-box" style="background-color: brown;"></span> Brown</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><code>p.text.highlight { color: navy; }</code></td>
+                        <td>(0, 0, 2, 1)</td>
+                        <td>21</td>
+                        <td><span class="color-box" style="background-color: navy;"></span> Navy</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><code>#demo { color: red; }</code></td>
+                        <td>(0, 1, 0, 0)</td>
+                        <td>100</td>
+                        <td><span class="color-box" style="background-color: red;"></span> Red</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><code>#demo.text { color: crimson; }</code></td>
+                        <td>(0, 1, 1, 0)</td>
+                        <td>110</td>
+                        <td><span class="color-box" style="background-color: crimson;"></span> Crimson</td>
+                    </tr>
+                    <tr class="winner">
+                        <td>10</td>
+                        <td><code>p#demo.text.highlight { color: gold; }</code></td>
+                        <td>(0, 1, 2, 1)</td>
+                        <td>121</td>
+                        <td><span class="color-box" style="background-color: gold;"></span> Gold ⭐</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="result-box">
+            <h2>🏆 Kết quả</h2>
+            <p class="result-text">Element cuối cùng hiển thị màu: <strong style="color: gold; font-size: 1.5em;">GOLD</strong></p>
+            <p><strong>Giải thích:</strong></p>
+            <ul>
+                <li>Rule 10 có specificity cao nhất: <code>p#demo.text.highlight</code> = (0, 1, 2, 1) = 121</li>
+                <li>Bao gồm: 1 ID selector (#demo) + 2 class selectors (.text, .highlight) + 1 element selector (p)</li>
+                <li>ID selector có trọng số rất cao (100), vượt trội so với class (10) và element (1)</li>
+                <li>Khi specificity bằng nhau (như rule 2 và 3), rule khai báo SAU sẽ thắng</li>
+            </ul>
+        </div>
+
+        <div class="experiment-box">
+            <h2>🧪 Thử nghiệm: Thay đổi thứ tự rules</h2>
+            <p><strong>Câu hỏi:</strong> Nếu thay đổi thứ tự các rules trong CSS file, kết quả có đổi không?</p>
+            <p><strong>Trả lời:</strong> <span class="answer">KHÔNG</span></p>
+            <p><strong>Giải thích:</strong></p>
+            <ul>
+                <li>Specificity luôn được ưu tiên TRƯỚC thứ tự khai báo</li>
+                <li>Chỉ khi 2 rules có specificity BẰNG NHAU, thì rule khai báo sau mới thắng</li>
+                <li>Trong trường hợp này, rule 10 có specificity cao nhất (121), nên dù đặt ở đâu cũng thắng</li>
+                <li>Ví dụ: Rule 2 (.text) và Rule 3 (.highlight) có cùng specificity (10), nên rule 3 thắng vì khai báo sau</li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <h2>⚠️ Lưu ý quan trọng</h2>
+            <div class="note-content">
+                <h3>Thứ tự ưu tiên CSS:</h3>
+                <ol>
+                    <li><strong>!important</strong> - Cao nhất (tránh dùng nếu không cần thiết)</li>
+                    <li><strong>Inline style</strong> - (1, 0, 0, 0) = 1000</li>
+                    <li><strong>ID selector</strong> - (0, 1, 0, 0) = 100</li>
+                    <li><strong>Class/Attribute/Pseudo-class</strong> - (0, 0, 1, 0) = 10</li>
+                    <li><strong>Element/Pseudo-element</strong> - (0, 0, 0, 1) = 1</li>
+                    <li><strong>Universal selector (*)</strong> - (0, 0, 0, 0) = 0</li>
+                </ol>
+                
+                <h3>Công thức tính Specificity:</h3>
+                <p><code>(inline, id, class, element)</code></p>
+                <ul>
+                    <li>Inline style: 1000 điểm</li>
+                    <li>Mỗi ID: 100 điểm</li>
+                    <li>Mỗi class/attribute/pseudo-class: 10 điểm</li>
+                    <li>Mỗi element/pseudo-element: 1 điểm</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
