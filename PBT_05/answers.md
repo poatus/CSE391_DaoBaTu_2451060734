@@ -432,3 +432,310 @@ $spacing-unit: 8px;
 - Desktop: ≥ 1200px
 
 ---
+### Câu C2 (10đ) — Thiết kế Responsive Strategy
+
+**Trang: Đặt bàn nhà hàng**
+
+#### Wireframes 3 kích thước:
+
+##### **Mobile (< 768px):**
+
+```
+┌─────────────────────┐
+│ ☰  LOGO    📞       │ ← Header sticky
+├─────────────────────┤
+│                     │
+│   HERO IMAGE        │ ← Full width, height: 50vh
+│   (Món ăn đặc sắc)  │
+│                     │
+├─────────────────────┤
+│  [Đặt bàn ngay] ←───┼─ CTA button nổi bật
+├─────────────────────┤
+│ ┌─────────────────┐ │
+│ │  Món 1          │ │ ← Grid 2 cột
+│ └─────────────────┘ │
+│ ┌─────────────────┐ │
+│ │  Món 2          │ │
+│ └─────────────────┘ │
+│ ┌─────────────────┐ │
+│ │  Món 3          │ │
+│ └─────────────────┘ │
+├─────────────────────┤
+│  FORM ĐẶT BÀN       │ ← Full width
+│  [Ngày]             │
+│  [Giờ]              │
+│  [Số người]         │
+│  [Ghi chú]          │
+│  [Xác nhận]         │
+├─────────────────────┤
+│  GOOGLE MAPS        │ ← Full width, height: 300px
+│  (Nhúng iframe)     │
+├─────────────────────┤
+│  FOOTER             │ ← Accordion
+│  ▼ Về chúng tôi     │
+│  ▼ Liên hệ          │
+│  ▼ Chính sách       │
+└─────────────────────┘
+```
+
+**Bị ẩn trên mobile:**
+- Breadcrumb
+- Sidebar menu
+- Detailed descriptions
+- Social media links (chỉ giữ icons)
+
+---
+
+##### **Tablet (768px - 1023px):**
+
+```
+┌───────────────────────────────────┐
+│  LOGO    Menu1  Menu2  Menu3  📞  │ ← Header ngang
+├───────────────────────────────────┤
+│                                   │
+│        HERO IMAGE                 │ ← Height: 60vh
+│        + Text overlay             │
+│                                   │
+├───────────────────────────────────┤
+│  ┌────┐ ┌────┐ ┌────┐            │
+│  │ M1 │ │ M2 │ │ M3 │            │ ← Grid 3 cột
+│  └────┘ └────┘ └────┘            │
+│  ┌────┐ ┌────┐ ┌────┐            │
+│  │ M4 │ │ M5 │ │ M6 │            │
+│  └────┘ └────┘ └────┘            │
+├─────────────────┬─────────────────┤
+│  FORM ĐẶT BÀN   │  GOOGLE MAPS    │ ← 2 cột (50/50)
+│  [Ngày] [Giờ]   │                 │
+│  [Số người]     │                 │
+│  [Ghi chú]      │                 │
+│  [Xác nhận]     │                 │
+├─────────────────┴─────────────────┤
+│  FOOTER (3 cột)                   │
+│  Về CT | Liên hệ | Chính sách     │
+└───────────────────────────────────┘
+```
+
+**Grid ảnh:** 3 cột  
+**Bản đồ:** Bên phải form (50% width)
+
+---
+
+##### **Desktop (≥ 1024px):**
+
+```
+┌─────────────────────────────────────────────────┐
+│  LOGO    Menu1  Menu2  Menu3  Menu4    📞 Đặt bàn│ ← Header + CTA
+├──────────┬──────────────────────────┬───────────┤
+│ SIDEBAR  │                          │           │
+│ ┌──────┐ │     HERO IMAGE           │  FORM     │ ← 3 cột
+│ │Menu  │ │     (Larger)             │  ĐẶT BÀN  │   20% | 50% | 30%
+│ │      │ │                          │           │
+│ │Giới  │ │                          │  [Ngày]   │
+│ │thiệu │ │                          │  [Giờ]    │
+│ │      │ │                          │  [Người]  │
+│ │Thực  │ ├──────────────────────────┤  [Note]   │
+│ │đơn   │ │  ┌───┐┌───┐┌───┐┌───┐   │  [Submit] │
+│ │      │ │  │ 1 ││ 2 ││ 3 ││ 4 │   │           │
+│ │Đánh  │ │  └───┘└───┘└───┘└───┘   │           │
+│ │giá   │ │  ┌───┐┌───┐┌───┐┌───┐   │           │
+│ │      │ │  │ 5 ││ 6 ││ 7 ││ 8 │   │           │
+│ └──────┘ │  └───┘└───┘└───┘└───┘   │           │
+├──────────┴──────────────────────────┴───────────┤
+│              GOOGLE MAPS (Full width)            │
+│              Height: 400px                       │
+├──────────────────────────────────────────────────┤
+│  FOOTER (4 cột)                                  │
+│  Về chúng tôi | Liên hệ | Chính sách | Social    │
+└──────────────────────────────────────────────────┘
+```
+
+**Layout:** 3 cột (Sidebar 20% | Content 50% | Form 30%)  
+**Grid ảnh:** 4 cột  
+**Bản đồ:** Full width dưới content
+
+---
+
+#### CSS Skeleton (Mobile-First):
+
+```css
+/* ===== VARIABLES ===== */
+:root {
+    --primary-color: #d4af37;
+    --text-dark: #2d3748;
+    --spacing: 16px;
+}
+
+/* ===== BASE (Mobile) ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+}
+
+/* ===== HEADER ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing);
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-menu {
+    display: none; /* Ẩn trên mobile */
+}
+
+.hamburger {
+    display: block;
+}
+
+/* ===== HERO ===== */
+.hero {
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== FOOD GRID ===== */
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cột mobile */
+    gap: var(--spacing);
+    padding: var(--spacing);
+}
+
+.food-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* ===== FORM & MAP ===== */
+.booking-section {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 cột mobile */
+    gap: var(--spacing);
+    padding: var(--spacing);
+}
+
+.booking-form,
+.map-container {
+    width: 100%;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    display: none; /* Ẩn trên mobile */
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    padding: var(--spacing);
+    background: #1a202c;
+    color: white;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 cột mobile */
+    gap: var(--spacing);
+}
+
+/* ===== TABLET (≥ 768px) ===== */
+@media (min-width: 768px) {
+    .header {
+        padding: var(--spacing) calc(var(--spacing) * 2);
+    }
+    
+    .nav-menu {
+        display: flex; /* Hiện menu ngang */
+        gap: 24px;
+    }
+    
+    .hamburger {
+        display: none;
+    }
+    
+    .hero {
+        height: 60vh;
+    }
+    
+    .food-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 cột tablet */
+        padding: calc(var(--spacing) * 2);
+    }
+    
+    .booking-section {
+        grid-template-columns: 1fr 1fr; /* 2 cột: form | map */
+    }
+    
+    .map-container iframe {
+        height: 100%;
+        min-height: 400px;
+    }
+    
+    .footer-links {
+        grid-template-columns: repeat(3, 1fr); /* 3 cột */
+    }
+}
+
+/* ===== DESKTOP (≥ 1024px) ===== */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .hero {
+        height: 70vh;
+    }
+    
+    .main-content {
+        display: grid;
+        grid-template-columns: 200px 1fr 350px; /* sidebar | content | form */
+        gap: calc(var(--spacing) * 2);
+        padding: calc(var(--spacing) * 2);
+    }
+    
+    .sidebar {
+        display: block; /* Hiện sidebar */
+    }
+    
+    .food-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 cột desktop */
+    }
+    
+    .booking-section {
+        grid-template-columns: 1fr; /* Form ở sidebar phải */
+    }
+    
+    .map-container {
+        grid-column: 1 / -1; /* Full width */
+    }
+    
+    .map-container iframe {
+        height: 400px;
+    }
+    
+    .footer-links {
+        grid-template-columns: repeat(4, 1fr); /* 4 cột */
+    }
+}
+```
