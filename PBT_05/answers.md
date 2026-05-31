@@ -340,3 +340,95 @@ $spacing-unit: 8px;
    ```
 
 ---
+## PHẦN C — PHÂN TÍCH (20 điểm)
+
+### Câu C1 (10đ) — Phân tích trang web thực
+
+**Trang web được chọn: Shopee.vn**
+
+#### 1. Screenshots 3 kích thước màn hình:
+
+> 📸 **Xem screenshots trong folder:** `screenshots/shopee_analysis/`
+> - `shopee_mobile_375px.png`
+> - `shopee_tablet_768px.png`
+> - `shopee_desktop_1440px.png`
+
+#### 2. Phân tích chi tiết:
+
+##### **Navigation thay đổi:**
+
+| Kích thước | Navigation |
+|------------|------------|
+| **Mobile (375px)** | - Hamburger menu ☰ ở góc trái<br>- Logo giữa<br>- Icon giỏ hàng + chat ở phải<br>- Search bar chiếm full width<br>- Bottom navigation bar (5 icons: Home, Categories, Notifications, Account, Cart) |
+| **Tablet (768px)** | - Menu ngang xuất hiện<br>- Search bar thu nhỏ<br>- Vẫn giữ hamburger cho categories<br>- Bottom nav bar biến mất |
+| **Desktop (1440px)** | - Full menu ngang với dropdown<br>- Search bar ở giữa header<br>- Đầy đủ links: Seller Centre, Download, Follow us<br>- Không có hamburger menu |
+
+##### **Lưới content thay đổi:**
+
+| Kích thước | Grid Layout |
+|------------|-------------|
+| **Mobile** | - Product grid: **2 cột**<br>- Banner: 1 slide full width<br>- Categories: scroll ngang |
+| **Tablet** | - Product grid: **3-4 cột**<br>- Banner: vẫn 1 slide nhưng tỷ lệ khác<br>- Categories: 2 hàng |
+| **Desktop** | - Product grid: **5-6 cột**<br>- Banner: sidebar + main banner<br>- Categories: grid 10 cột |
+
+##### **Elements bị ẩn trên mobile:**
+
+- Sidebar filters (chuyển thành bottom sheet khi click "Filter")
+- Breadcrumb navigation
+- "Seller Centre", "Download App" links
+- Detailed product descriptions (chỉ hiện title + price)
+- Footer links (thu gọn thành accordion)
+- Live chat widget (chuyển thành floating button)
+
+##### **Font size thay đổi:**
+
+| Element | Mobile | Tablet | Desktop |
+|---------|--------|--------|---------|
+| Product title | 12px | 13px | 14px |
+| Product price | 14px | 15px | 16px |
+| Header links | 13px | 14px | 14px |
+| Body text | 14px | 15px | 16px |
+
+#### 3. Media Queries từ DevTools:
+
+> 📸 **Screenshots:** `screenshots/shopee_analysis/media_queries.png`
+
+**Ví dụ Media Queries tìm được:**
+
+```css
+/* Từ Shopee.vn */
+@media (min-width: 768px) {
+    .shopee-header__content {
+        padding: 0 40px;
+    }
+    .shopee-searchbar {
+        width: 500px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .home-product-item {
+        width: calc(16.66667% - 8px); /* 6 cột */
+    }
+}
+
+@media (max-width: 767px) {
+    .shopee-header__navbar {
+        display: none;
+    }
+    .shopee-bottom-bar {
+        display: flex;
+    }
+}
+```
+
+**Breakpoints chính của Shopee:**
+- Mobile: < 768px
+- Tablet: 768px - 1199px
+- Desktop: ≥ 1200px
+
+---
