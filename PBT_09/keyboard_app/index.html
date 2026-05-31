@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Shortcuts & Accessibility</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header" role="banner">
+            <h1>⌨️ Keyboard App</h1>
+            <p>Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to open commands</p>
+            <div class="shortcuts-hint" aria-live="polite">
+                <span>← → Navigate</span>
+                <span>1-9 Jump to image</span>
+                <span>Space Play/Pause</span>
+                <span>Esc Close</span>
+            </div>
+        </header>
+
+        <!-- Gallery -->
+        <section class="gallery-section" aria-label="Image Gallery">
+            <div class="gallery-container">
+                <button class="gallery-nav gallery-prev" id="prevBtn" aria-label="Previous image">‹</button>
+                <div class="gallery-viewport" tabindex="0" role="region" aria-label="Gallery viewport">
+                    <div class="gallery-track" id="galleryTrack">
+                        <!-- Images rendered by JS -->
+                    </div>
+                </div>
+                <button class="gallery-nav gallery-next" id="nextBtn" aria-label="Next image">›</button>
+            </div>
+
+            <div class="gallery-info" aria-live="polite">
+                <span id="galleryCounter">1 / 12</span>
+                <span id="galleryTitle">Image 1</span>
+                <button id="playBtn" class="play-btn" aria-label="Play slideshow">▶ Play</button>
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="thumbnails" id="thumbnails" role="tablist" aria-label="Image thumbnails">
+                <!-- Thumbnails rendered by JS -->
+            </div>
+        </section>
+
+        <!-- Image Modal -->
+        <div id="imageModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Image preview">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose" aria-label="Close image">✕</button>
+                <img id="modalImage" src="" alt="Preview">
+                <div class="modal-caption" id="modalCaption"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Command Palette Overlay -->
+    <div id="commandPalette" class="command-overlay hidden" role="dialog" aria-modal="true" aria-label="Command palette">
+        <div class="command-palette">
+            <div class="command-header">
+                <span class="command-icon">⌨️</span>
+                <input type="text" id="commandInput" placeholder="Type a command..." autocomplete="off" aria-label="Search commands">
+                <kbd>Esc</kbd>
+            </div>
+            <div class="command-list" id="commandList" role="listbox">
+                <!-- Commands rendered by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

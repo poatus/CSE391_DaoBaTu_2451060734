@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🛍️ Product Catalog</h1>
+                <div class="header-actions">
+                    <button id="darkModeToggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+                    <div class="cart-icon" id="cartIcon">
+                        🛒
+                        <span id="cartBadge" class="cart-badge hidden">0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Search & Controls -->
+            <div class="controls-bar">
+                <div class="search-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+                </div>
+
+                <div class="sort-wrapper">
+                    <label for="sortSelect">Sort by:</label>
+                    <select id="sortSelect">
+                        <option value="default">Default</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name-asc">Name: A-Z</option>
+                        <option value="rating-desc">Rating: Highest</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="category-bar" id="categoryBar">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="phone">📱 Phones</button>
+                <button class="category-btn" data-category="laptop">💻 Laptops</button>
+                <button class="category-btn" data-category="audio">🎧 Audio</button>
+                <button class="category-btn" data-category="watch">⌚ Watches</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid"></div>
+        </main>
+
+        <!-- Product Modal -->
+        <div id="productModal" class="modal-overlay hidden">
+            <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                <button class="modal-close" id="modalClose" aria-label="Close modal">✕</button>
+                <div id="modalBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
