@@ -1,0 +1,398 @@
+// ========================================
+// MAIN SCSS FILE - Import all partials
+// ========================================
+
+// 1. Import Variables (must be first)
+@import 'variables';
+
+// 2. Import Mixins
+@import 'mixins';
+
+// 3. Import Components
+@import 'components';
+
+// ========================================
+// BASE STYLES
+// ========================================
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    line-height: 1.6;
+    color: $text-dark;
+    background-color: $bg-light;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+// ========================================
+// LAYOUT
+// ========================================
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    
+    @include respond-to(tablet) {
+        padding: 0 $spacing-lg;
+    }
+    
+    @include respond-to(desktop) {
+        padding: 0 $spacing-xl;
+    }
+}
+
+.section {
+    padding: $spacing-2xl 0;
+    
+    &__header {
+        text-align: center;
+        margin-bottom: $spacing-xl;
+        
+        h2 {
+            font-size: $font-size-3xl;
+            margin-bottom: $spacing-sm;
+            @include text-gradient($primary-color, $secondary-color);
+        }
+        
+        p {
+            color: $text-gray;
+            font-size: $font-size-lg;
+        }
+    }
+}
+
+// ========================================
+// HEADER
+// ========================================
+
+.header {
+    background: $bg-white;
+    box-shadow: $shadow-sm;
+    position: sticky;
+    top: 0;
+    z-index: $z-sticky;
+    
+    &__content {
+        @include flex-between;
+        padding: $spacing-md 0;
+    }
+    
+    &__logo {
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-bold;
+        @include text-gradient($primary-color, $secondary-color);
+    }
+    
+    &__nav {
+        display: none;
+        
+        @include respond-to(tablet) {
+            display: flex;
+            gap: $spacing-lg;
+        }
+    }
+    
+    &__hamburger {
+        display: block;
+        
+        @include respond-to(tablet) {
+            display: none;
+        }
+    }
+}
+
+// ========================================
+// HERO SECTION
+// ========================================
+
+.hero {
+    @include gradient-bg($primary-color, $secondary-color);
+    color: white;
+    padding: $spacing-2xl * 2 0;
+    text-align: center;
+    
+    &__title {
+        font-size: $font-size-3xl;
+        margin-bottom: $spacing-md;
+        
+        @include respond-to(tablet) {
+            font-size: 48px;
+        }
+    }
+    
+    &__subtitle {
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-xl;
+        opacity: 0.9;
+    }
+    
+    &__cta {
+        @include flex-center;
+        gap: $spacing-md;
+        flex-wrap: wrap;
+    }
+}
+
+// ========================================
+// PRODUCT GRID
+// ========================================
+
+.product-grid {
+    @include grid-auto-fit(280px, $spacing-lg);
+    
+    @include respond-to(desktop) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.product-card {
+    background: $bg-white;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    @include card-shadow(1);
+    @include hover-lift;
+    
+    &__badge {
+        position: absolute;
+        top: $spacing-sm;
+        left: $spacing-sm;
+        padding: 4px $spacing-xs;
+        background: $danger-color;
+        color: white;
+        border-radius: $border-radius-sm;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-bold;
+        z-index: 10;
+        
+        &--hot {
+            background: $warning-color;
+        }
+        
+        &--new {
+            background: $success-color;
+        }
+    }
+    
+    &__image {
+        position: relative;
+        overflow: hidden;
+        @include aspect-ratio(4, 3);
+        
+        img {
+            object-fit: cover;
+            transition: transform $transition-base ease;
+        }
+    }
+    
+    &:hover &__image img {
+        transform: scale(1.1);
+    }
+    
+    &__content {
+        padding: $spacing-md;
+    }
+    
+    &__title {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semibold;
+        margin-bottom: $spacing-xs;
+        @include truncate(2);
+    }
+    
+    &__price {
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-bold;
+        color: $danger-color;
+        margin-bottom: $spacing-md;
+    }
+}
+
+// ========================================
+// FOOTER
+// ========================================
+
+.footer {
+    background: $bg-dark;
+    color: $text-light;
+    padding: $spacing-2xl 0 $spacing-md;
+    margin-top: $spacing-2xl * 2;
+    
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-xl;
+        margin-bottom: $spacing-xl;
+        
+        @include respond-to(tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        @include respond-to(desktop) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+    
+    &__col {
+        h4 {
+            margin-bottom: $spacing-md;
+            color: white;
+        }
+        
+        ul {
+            @include reset-list;
+            
+            li {
+                margin-bottom: $spacing-xs;
+                
+                a {
+                    color: $text-light;
+                    transition: color $transition-base ease;
+                    
+                    &:hover {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+    
+    &__bottom {
+        text-align: center;
+        padding-top: $spacing-md;
+        border-top: 1px solid rgba(white, 0.1);
+        color: $text-light;
+    }
+}
+
+// ========================================
+// UTILITY CLASSES
+// ========================================
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mt-1 { margin-top: $spacing-xs; }
+.mt-2 { margin-top: $spacing-sm; }
+.mt-3 { margin-top: $spacing-md; }
+.mt-4 { margin-top: $spacing-lg; }
+.mt-5 { margin-top: $spacing-xl; }
+
+.mb-1 { margin-bottom: $spacing-xs; }
+.mb-2 { margin-bottom: $spacing-sm; }
+.mb-3 { margin-bottom: $spacing-md; }
+.mb-4 { margin-bottom: $spacing-lg; }
+.mb-5 { margin-bottom: $spacing-xl; }
+
+.p-1 { padding: $spacing-xs; }
+.p-2 { padding: $spacing-sm; }
+.p-3 { padding: $spacing-md; }
+.p-4 { padding: $spacing-lg; }
+.p-5 { padding: $spacing-xl; }
+
+// ========================================
+// ANIMATIONS
+// ========================================
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+}
+
+// ========================================
+// RESPONSIVE HELPERS
+// ========================================
+
+.hide-mobile {
+    display: none;
+    
+    @include respond-to(tablet) {
+        display: block;
+    }
+}
+
+.hide-tablet {
+    @include respond-to(tablet) {
+        display: none;
+    }
+}
+
+.hide-desktop {
+    @include respond-to(desktop) {
+        display: none;
+    }
+}
+
+.show-mobile {
+    display: block;
+    
+    @include respond-to(tablet) {
+        display: none;
+    }
+}
