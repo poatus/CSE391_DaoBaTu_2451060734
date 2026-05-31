@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transitions & Animations Demo</title>
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>CSS Transitions & Animations</h1>
+            <p>Hover và scroll để xem các hiệu ứng</p>
+        </header>
+
+        <!-- DEMO 1: Card Hover Effect -->
+        <section class="demo-section fade-in">
+            <h2>1. Card Hover Effect</h2>
+            <p class="description">Hover vào card để thấy hiệu ứng translateY và box-shadow</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/300x200/3182ce/ffffff?text=Product+1" alt="Product 1">
+                    </div>
+                    <div class="card-content">
+                        <h3>Sản phẩm 1</h3>
+                        <p>Hover để thấy card nổi lên với shadow tăng</p>
+                        <span class="price">1.500.000₫</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/300x200/805ad5/ffffff?text=Product+2" alt="Product 2">
+                    </div>
+                    <div class="card-content">
+                        <h3>Sản phẩm 2</h3>
+                        <p>Transition: all 0.3s ease</p>
+                        <span class="price">2.500.000₫</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/300x200/38a169/ffffff?text=Product+3" alt="Product 3">
+                    </div>
+                    <div class="card-content">
+                        <h3>Sản phẩm 3</h3>
+                        <p>Transform: translateY(-8px)</p>
+                        <span class="price">3.500.000₫</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEMO 2: Button Hover Effects -->
+        <section class="demo-section fade-in">
+            <h2>2. Button Hover Effects</h2>
+            <p class="description">Hover vào các nút để thấy hiệu ứng màu sắc và scale</p>
+            
+            <div class="button-group">
+                <button class="btn btn-primary">Mua ngay</button>
+                <button class="btn btn-secondary">Thêm vào giỏ</button>
+                <button class="btn btn-success">Xác nhận</button>
+                <button class="btn btn-danger">Xóa</button>
+                <button class="btn btn-outline">Hủy bỏ</button>
+            </div>
+        </section>
+
+        <!-- DEMO 3: Image Zoom Effect -->
+        <section class="demo-section fade-in">
+            <h2>3. Image Zoom on Hover</h2>
+            <p class="description">Hover vào ảnh để thấy hiệu ứng zoom (overflow: hidden)</p>
+            
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="https://via.placeholder.com/400x300/e53e3e/ffffff?text=Image+1" alt="Image 1">
+                    <div class="image-overlay">
+                        <span>Xem chi tiết</span>
+                    </div>
+                </div>
+
+                <div class="image-container">
+                    <img src="https://via.placeholder.com/400x300/f59e0b/ffffff?text=Image+2" alt="Image 2">
+                    <div class="image-overlay">
+                        <span>Xem chi tiết</span>
+                    </div>
+                </div>
+
+                <div class="image-container">
+                    <img src="https://via.placeholder.com/400x300/06b6d4/ffffff?text=Image+3" alt="Image 3">
+                    <div class="image-overlay">
+                        <span>Xem chi tiết</span>
+                    </div>
+                </div>
+
+                <div class="image-container">
+                    <img src="https://via.placeholder.com/400x300/8b5cf6/ffffff?text=Image+4" alt="Image 4">
+                    <div class="image-overlay">
+                        <span>Xem chi tiết</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEMO 4: Loading Spinner -->
+        <section class="demo-section fade-in">
+            <h2>4. Loading Spinner Animation</h2>
+            <p class="description">Spinner xoay vòng vô hạn với @keyframes</p>
+            
+            <div class="spinner-container">
+                <div class="spinner"></div>
+                <p>Loading...</p>
+            </div>
+
+            <div class="spinner-container">
+                <div class="spinner spinner-dual"></div>
+                <p>Dual Ring Spinner</p>
+            </div>
+
+            <div class="spinner-container">
+                <div class="dots-spinner">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <p>Dots Spinner</p>
+            </div>
+        </section>
+
+        <!-- DEMO 5: Fade-in on Scroll -->
+        <section class="demo-section fade-in">
+            <h2>5. Fade-in Animation (CSS Only)</h2>
+            <p class="description">Các phần tử xuất hiện với animation fade-in</p>
+            
+            <div class="fade-in-demo">
+                <div class="fade-in-item" style="animation-delay: 0.1s;">
+                    <div class="icon">🚀</div>
+                    <h3>Nhanh chóng</h3>
+                    <p>Giao hàng trong 24h</p>
+                </div>
+
+                <div class="fade-in-item" style="animation-delay: 0.2s;">
+                    <div class="icon">🔒</div>
+                    <h3>Bảo mật</h3>
+                    <p>Thanh toán an toàn 100%</p>
+                </div>
+
+                <div class="fade-in-item" style="animation-delay: 0.3s;">
+                    <div class="icon">💎</div>
+                    <h3>Chất lượng</h3>
+                    <p>Sản phẩm chính hãng</p>
+                </div>
+
+                <div class="fade-in-item" style="animation-delay: 0.4s;">
+                    <div class="icon">🎁</div>
+                    <h3>Ưu đãi</h3>
+                    <p>Khuyến mãi hấp dẫn</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BONUS: More Animations -->
+        <section class="demo-section fade-in">
+            <h2>Bonus: Các Animation Khác</h2>
+            
+            <div class="bonus-animations">
+                <div class="animation-box bounce">
+                    <p>Bounce</p>
+                </div>
+
+                <div class="animation-box pulse">
+                    <p>Pulse</p>
+                </div>
+
+                <div class="animation-box shake">
+                    <p>Shake</p>
+                </div>
+
+                <div class="animation-box rotate">
+                    <p>Rotate</p>
+                </div>
+
+                <div class="animation-box slide-in">
+                    <p>Slide In</p>
+                </div>
+
+                <div class="animation-box flip">
+                    <p>Flip</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Bar Animation -->
+        <section class="demo-section fade-in">
+            <h2>Progress Bar Animation</h2>
+            
+            <div class="progress-bars">
+                <div class="progress-item">
+                    <label>HTML/CSS</label>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%; animation-delay: 0.2s;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <label>JavaScript</label>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%; animation-delay: 0.4s;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <label>React</label>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%; animation-delay: 0.6s;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="page-footer fade-in">
+            <p>© 2026 CSS Animations Demo - Phiếu Bài Tập 05</p>
+        </footer>
+    </div>
+</body>
+</html>
